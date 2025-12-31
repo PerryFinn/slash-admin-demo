@@ -20,12 +20,6 @@ Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、s
 
 ## 快速开始
 
-### 获取项目代码
-
-```bash
-git clone https://github.com/d3george/slash-admin.git
-```
-
 ### 安装依赖
 
 在项目根目录下运行以下命令安装项目依赖：
