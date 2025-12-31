@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import styled from "styled-components";
 import { Icon } from "@/components/icon";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Avatar, AvatarImage } from "@/ui/avatar";
 import { Badge } from "@/ui/badge";
 import { Button } from "@/ui/button";

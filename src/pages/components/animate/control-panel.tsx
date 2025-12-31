@@ -1,4 +1,4 @@
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Card, CardContent } from "@/ui/card";
 import { ScrollArea } from "@/ui/scroll-area";
 

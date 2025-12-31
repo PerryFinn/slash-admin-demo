@@ -1,5 +1,5 @@
 import { Icon } from "@/components/icon";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/ui/card";
 

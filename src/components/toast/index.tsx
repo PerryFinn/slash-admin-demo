@@ -1,7 +1,7 @@
 import { Toaster } from "sonner";
 import { Icon } from "@/components/icon";
 import { useSettings } from "@/store/settingStore";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 
 /**
  * https://sonner.emilkowal.ski/getting-started

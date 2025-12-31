@@ -1,10 +1,10 @@
 import type { Props as ApexChartProps } from "react-apexcharts";
 import ApexChart from "react-apexcharts";
-import { chartWrapper } from "./styles.css";
+import "./styles.css";
 
 export function Chart(props: ApexChartProps) {
   return (
-    <div className={chartWrapper}>
+    <div className="apexcharts-wrapper">
       <ApexChart
         {...props}
         options={{

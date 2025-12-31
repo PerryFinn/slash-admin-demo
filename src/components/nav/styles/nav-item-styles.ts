@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 
 export type NavItemStyles = {
   icon: CSSProperties;

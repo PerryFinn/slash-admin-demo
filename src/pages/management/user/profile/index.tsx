@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import bannerImage from "@/assets/images/background/banner-1.png";
 import { Icon } from "@/components/icon";
 import { useUserInfo } from "@/store/userStore";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Avatar, AvatarImage } from "@/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
 import { Text, Title } from "@/ui/typography";

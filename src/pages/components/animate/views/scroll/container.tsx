@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import MotionViewport from "@/components/animate/motion-viewport";
 import { getVariant } from "@/components/animate/variants";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Card } from "@/ui/card";
 
 type Props = {

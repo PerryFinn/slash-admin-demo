@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { ScrollArea } from "@/ui/scroll-area";
 import { Title } from "@/ui/typography";
 

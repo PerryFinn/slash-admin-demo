@@ -1,5 +1,5 @@
 import { Chart, useChart } from "@/components/chart";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 
 const series = [
   {

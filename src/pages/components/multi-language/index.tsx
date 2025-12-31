@@ -1,7 +1,7 @@
 import { LocalEnum } from "#/enum";
 import { Icon } from "@/components/icon";
 import useLocale from "@/locales/use-locale";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/ui/radio-group";

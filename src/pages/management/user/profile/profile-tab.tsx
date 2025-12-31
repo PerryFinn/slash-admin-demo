@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { Timeline } from "antd";
 import { Icon } from "@/components/icon";
 import { useUserInfo } from "@/store/userStore";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Badge } from "@/ui/badge";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/ui/card";

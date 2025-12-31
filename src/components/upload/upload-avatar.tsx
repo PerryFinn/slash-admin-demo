@@ -2,7 +2,7 @@ import { Upload } from "antd";
 import type { UploadChangeParam, UploadFile, UploadProps } from "antd/es/upload";
 import { useState } from "react";
 import { Icon } from "@/components/icon";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Text } from "@/ui/typography";
 import { fBytes } from "@/utils/format-number";
 import { StyledUploadAvatar } from "./styles";

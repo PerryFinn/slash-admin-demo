@@ -1,5 +1,4 @@
 import tailwindcss from "@tailwindcss/vite";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig, loadEnv } from "vite";
@@ -14,9 +13,6 @@ export default defineConfig(({ mode }) => {
     base,
     plugins: [
       react(),
-      vanillaExtractPlugin({
-        identifiers: ({ debugId }) => `${debugId}`,
-      }),
       tailwindcss(),
       tsconfigPaths(),
 

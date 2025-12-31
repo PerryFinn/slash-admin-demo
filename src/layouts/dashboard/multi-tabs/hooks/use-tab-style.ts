@@ -2,7 +2,7 @@ import { type CSSProperties, useMemo } from "react";
 import { ThemeLayout } from "#/enum";
 import { up, useMediaQuery } from "@/hooks";
 import { useSettings } from "@/store/settingStore";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { rgbAlpha } from "@/utils/theme";
 
 export function useMultiTabsStyle() {

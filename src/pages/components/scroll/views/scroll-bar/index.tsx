@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import { ScrollArea, ScrollBar } from "@/ui/scroll-area";

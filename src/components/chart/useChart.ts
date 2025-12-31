@@ -1,7 +1,7 @@
 import type { ApexOptions } from "apexcharts";
 import { mergeDeepRight } from "ramda";
 import { useSettings } from "@/store/settingStore";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { breakpointsTokens } from "@/theme/tokens/breakpoints";
 import { paletteColors, presetsColors } from "@/theme/tokens/color";
 import type { ThemeColorPresets, ThemeMode } from "@/types/enum";

@@ -1,5 +1,5 @@
 import Character from "@/assets/images/characters/character_1.png";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import ErrorLayout from "./components/ErrorLayout";
 
 export default function Page404() {

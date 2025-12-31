@@ -1,5 +1,4 @@
 import "./global.css";
-import "./theme/theme.css";
 import "./locales/i18n";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
@@ -10,7 +9,10 @@ import { registerLocalIcons } from "./components/icon";
 import { GLOBAL_CONFIG } from "./global-config";
 import ErrorBoundary from "./routes/components/error-boundary";
 import { routesSection } from "./routes/sections";
+import { initThemeFromStorage } from "./theme/theme-vars";
 import { urlJoin } from "./utils";
+
+initThemeFromStorage();
 
 await registerLocalIcons();
 await worker.start({

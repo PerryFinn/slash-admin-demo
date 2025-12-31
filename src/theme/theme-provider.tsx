@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { HtmlDataAttribute } from "#/enum";
 import { useSettings } from "@/store/settingStore";
+import { applyThemeCssVars } from "./theme-vars";
 import type { UILibraryAdapter } from "./type";
 
 interface ThemeProviderProps {
@@ -11,20 +12,16 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children, adapters = [] }: ThemeProviderProps) {
   const { themeMode, themeColorPresets, fontFamily, fontSize } = useSettings();
 
-  // Update HTML class to support Tailwind dark mode
-  useEffect(() => {
+  // 同步更新主题属性与 CSS 变量，避免闪烁
+  useLayoutEffect(() => {
     const root = window.document.documentElement;
     root.setAttribute(HtmlDataAttribute.ThemeMode, themeMode);
-  }, [themeMode]);
-
-  // Dynamically update theme color related CSS variables
-  useEffect(() => {
-    const root = window.document.documentElement;
     root.setAttribute(HtmlDataAttribute.ColorPalette, themeColorPresets);
-  }, [themeColorPresets]);
+    applyThemeCssVars({ themeMode, themeColorPresets });
+  }, [themeMode, themeColorPresets]);
 
   // Update font size and font family
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = window.document.documentElement;
     root.style.fontSize = `${fontSize}px`;
 

@@ -3,7 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { type CSSProperties, memo, useState } from "react";
 import styled from "styled-components";
 import { Icon } from "@/components/icon";
-import { themeVars } from "@/theme/theme.css";
+import { themeVars } from "@/theme/theme-vars";
 import { Avatar, AvatarImage } from "@/ui/avatar";
 import { Button } from "@/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/ui/select";
