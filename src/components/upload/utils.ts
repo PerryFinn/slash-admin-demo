@@ -19,45 +19,45 @@ const FORMAT_VIDEO = ["m4v", "avi", "mpg", "mp4", "webm"];
  * @param fileName
  */
 export function getFileFormat(fileName: string | undefined) {
-	let format: string | undefined;
-	switch (true) {
-		case FORMAT_PDF.includes(fileTypeByName(fileName)):
-			format = "pdf";
-			break;
-		case FORMAT_TEXT.includes(fileTypeByName(fileName)):
-			format = "txt";
-			break;
-		case FORMAT_PHOTOSHOP.includes(fileTypeByName(fileName)):
-			format = "psd";
-			break;
-		case FORMAT_WORD.includes(fileTypeByName(fileName)):
-			format = "word";
-			break;
-		case FORMAT_EXCEL.includes(fileTypeByName(fileName)):
-			format = "excel";
-			break;
-		case FORMAT_ZIP.includes(fileTypeByName(fileName)):
-			format = "zip";
-			break;
-		case FORMAT_ILLUSTRATOR.includes(fileTypeByName(fileName)):
-			format = "ai";
-			break;
-		case FORMAT_POWERPOINT.includes(fileTypeByName(fileName)):
-			format = "ppt";
-			break;
-		case FORMAT_AUDIO.includes(fileTypeByName(fileName)):
-			format = "audio";
-			break;
-		case FORMAT_IMG.includes(fileTypeByName(fileName)):
-			format = "img";
-			break;
-		case FORMAT_VIDEO.includes(fileTypeByName(fileName)):
-			format = "video";
-			break;
-		default:
-			format = fileTypeByName(fileName);
-	}
-	return format;
+  let format: string | undefined;
+  switch (true) {
+    case FORMAT_PDF.includes(fileTypeByName(fileName)):
+      format = "pdf";
+      break;
+    case FORMAT_TEXT.includes(fileTypeByName(fileName)):
+      format = "txt";
+      break;
+    case FORMAT_PHOTOSHOP.includes(fileTypeByName(fileName)):
+      format = "psd";
+      break;
+    case FORMAT_WORD.includes(fileTypeByName(fileName)):
+      format = "word";
+      break;
+    case FORMAT_EXCEL.includes(fileTypeByName(fileName)):
+      format = "excel";
+      break;
+    case FORMAT_ZIP.includes(fileTypeByName(fileName)):
+      format = "zip";
+      break;
+    case FORMAT_ILLUSTRATOR.includes(fileTypeByName(fileName)):
+      format = "ai";
+      break;
+    case FORMAT_POWERPOINT.includes(fileTypeByName(fileName)):
+      format = "ppt";
+      break;
+    case FORMAT_AUDIO.includes(fileTypeByName(fileName)):
+      format = "audio";
+      break;
+    case FORMAT_IMG.includes(fileTypeByName(fileName)):
+      format = "img";
+      break;
+    case FORMAT_VIDEO.includes(fileTypeByName(fileName)):
+      format = "video";
+      break;
+    default:
+      format = fileTypeByName(fileName);
+  }
+  return format;
 }
 
 /**
@@ -65,79 +65,79 @@ export function getFileFormat(fileName: string | undefined) {
  * @param fileName
  */
 export function getFileThumb(fileName: string | undefined) {
-	let thumb: string | undefined;
-	const format = getFileFormat(fileName);
-	switch (format) {
-		case "txt":
-			thumb = "file-txt";
-			break;
-		case "zip":
-			thumb = "file-zip";
-			break;
-		case "audio":
-			thumb = "file-audio";
-			break;
-		case "video":
-			thumb = "file-video";
-			break;
-		case "word":
-			thumb = "file-word";
-			break;
-		case "excel":
-			thumb = "file-excel";
-			break;
-		case "ppt":
-			thumb = "file-ppt";
-			break;
-		case "pdf":
-			thumb = "file-pdf";
-			break;
-		case "psd":
-			thumb = "file-psd";
-			break;
-		case "ai":
-			thumb = "file-ai";
-			break;
-		case "img":
-			thumb = "file-img";
-			break;
-		case "folder":
-			thumb = "folder";
-			break;
-		default:
-			thumb = "file";
-	}
-	return thumb;
+  let thumb: string | undefined;
+  const format = getFileFormat(fileName);
+  switch (format) {
+    case "txt":
+      thumb = "file-txt";
+      break;
+    case "zip":
+      thumb = "file-zip";
+      break;
+    case "audio":
+      thumb = "file-audio";
+      break;
+    case "video":
+      thumb = "file-video";
+      break;
+    case "word":
+      thumb = "file-word";
+      break;
+    case "excel":
+      thumb = "file-excel";
+      break;
+    case "ppt":
+      thumb = "file-ppt";
+      break;
+    case "pdf":
+      thumb = "file-pdf";
+      break;
+    case "psd":
+      thumb = "file-psd";
+      break;
+    case "ai":
+      thumb = "file-ai";
+      break;
+    case "img":
+      thumb = "file-img";
+      break;
+    case "folder":
+      thumb = "folder";
+      break;
+    default:
+      thumb = "file";
+  }
+  return thumb;
 }
 
 export function fileTypeByName(fileName = "") {
-	return fileName?.split(".").pop() || "folder";
+  return fileName?.split(".").pop() || "folder";
 }
 
 export function beforeAvatarUpload(file: RcFile) {
-	const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-	if (!isJpgOrPng) {
-		toast.error("You can only upload JPG/PNG file!", {
-			position: "top-center",
-		});
-	}
-	const isLt2M = file.size / 1024 / 1024 < 2;
-	if (!isLt2M) {
-		toast.error("Image must smaller than 2MB!", {
-			position: "top-center",
-		});
-	}
-	return isJpgOrPng && isLt2M;
+  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+  if (!isJpgOrPng) {
+    toast.error("You can only upload JPG/PNG file!", {
+      position: "top-center",
+    });
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    toast.error("Image must smaller than 2MB!", {
+      position: "top-center",
+    });
+  }
+  return isJpgOrPng && isLt2M;
 }
 
 export function getBase64(img: RcFile, callback: (url: string) => void) {
-	const reader = new FileReader();
-	reader.addEventListener("load", () => callback(reader.result as string));
-	reader.readAsDataURL(img);
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result as string));
+  reader.readAsDataURL(img);
 }
 
 export function getBlobUrl(imgFile: RcFile) {
-	const fileBlob = new Blob([imgFile]);
-	const thumbnailUrl = URL.createObjectURL(fileBlob);
-	return thumbnailUrl;
+  const fileBlob = new Blob([imgFile]);
+  const thumbnailUrl = URL.createObjectURL(fileBlob);
+  return thumbnailUrl;
 }

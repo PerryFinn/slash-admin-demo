@@ -19,36 +19,36 @@ import { useUserInfo, useUserToken } from "@/store/userStore";
  * checkAll(['admin', 'editor'])
  */
 export const useAuthCheck = (baseOn: "role" | "permission" = "permission") => {
-	const { accessToken } = useUserToken();
-	const { permissions = [], roles = [] } = useUserInfo();
+  const { accessToken } = useUserToken();
+  const { permissions = [], roles = [] } = useUserInfo();
 
-	// depends on baseOn to select resource pool
-	const resourcePool = baseOn === "role" ? roles : permissions;
+  // depends on baseOn to select resource pool
+  const resourcePool = baseOn === "role" ? roles : permissions;
 
-	// check if item exists
-	const check = (item: string): boolean => {
-		// if user is not logged in, return false
-		if (!accessToken) {
-			return false;
-		}
-		return resourcePool.some((p) => p.code === item);
-	};
+  // check if item exists
+  const check = (item: string): boolean => {
+    // if user is not logged in, return false
+    if (!accessToken) {
+      return false;
+    }
+    return resourcePool.some((p) => p.code === item);
+  };
 
-	// check if any item exists
-	const checkAny = (items: string[]) => {
-		if (items.length === 0) {
-			return true;
-		}
-		return items.some((item) => check(item));
-	};
+  // check if any item exists
+  const checkAny = (items: string[]) => {
+    if (items.length === 0) {
+      return true;
+    }
+    return items.some((item) => check(item));
+  };
 
-	// check if all items exist
-	const checkAll = (items: string[]) => {
-		if (items.length === 0) {
-			return true;
-		}
-		return items.every((item) => check(item));
-	};
+  // check if all items exist
+  const checkAll = (items: string[]) => {
+    if (items.length === 0) {
+      return true;
+    }
+    return items.every((item) => check(item));
+  };
 
-	return { check, checkAny, checkAll };
+  return { check, checkAny, checkAll };
 };
