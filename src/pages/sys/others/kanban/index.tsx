@@ -169,7 +169,7 @@ export default function Kanban() {
     setState(newState);
   };
 
-  const deletColumn = (columnId: string) => {
+  const deleteColumn = (columnId: string) => {
     const column = state.columns[columnId];
     const newTasks = Object.keys(state.tasks)
       .filter((key) => !column.taskIds.includes(key))
@@ -252,7 +252,7 @@ export default function Kanban() {
                     tasks={tasks}
                     createTask={createTask}
                     clearColumn={clearColumn}
-                    deleteColumn={deletColumn}
+                    deleteColumn={deleteColumn}
                     renameColumn={renameColumn}
                   />
                 );
@@ -268,7 +268,7 @@ export default function Kanban() {
                   tasks={state.columns[activeId].taskIds.map((id) => state.tasks[id])}
                   createTask={createTask}
                   clearColumn={clearColumn}
-                  deleteColumn={deletColumn}
+                  deleteColumn={deleteColumn}
                   renameColumn={renameColumn}
                   isDragging
                 />
