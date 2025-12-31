@@ -244,28 +244,32 @@ export default function Analysis() {
   const topChannels = dashboardData.topChannels[timeType];
   const trafficData = dashboardData.trafficData[timeType];
 
-  const chartOptions = useChart({
-    xaxis: { categories: webAnalytic.chart.categories },
+  const webAnalyticOption = useChart({
+    tooltip: { trigger: "axis" },
+    xAxis: { type: "category", boundaryGap: false, data: webAnalytic.chart.categories },
+    yAxis: { type: "value" },
+    series: webAnalytic.chart.series.map((s) => ({
+      name: s.name,
+      type: "line",
+      smooth: true,
+      showSymbol: false,
+      lineStyle: { width: 2 },
+      data: s.data,
+    })),
   });
 
-  const deviceChartOptions = useChart({
-    labels: sessionDevices.map((d) => d.label),
-    stroke: {
-      show: false,
-    },
-    legend: {
-      show: false,
-    },
-    tooltip: {
-      fillSeriesColor: false,
-    },
-    plotOptions: {
-      pie: {
-        donut: {
-          size: "60%",
-        },
+  const deviceOption = useChart({
+    tooltip: { trigger: "item" },
+    series: [
+      {
+        type: "pie",
+        radius: ["45%", "60%"],
+        avoidLabelOverlap: true,
+        label: { show: false },
+        labelLine: { show: false },
+        data: sessionDevices.map((d) => ({ name: d.label, value: d.value, itemStyle: { color: d.color } })),
       },
-    },
+    ],
   });
 
   return (
@@ -335,7 +339,7 @@ export default function Analysis() {
               </div>
             </div>
             <div className="w-full min-h-[200px] mt-2">
-              <Chart type="line" height={320} options={chartOptions} series={webAnalytic.chart.series} />
+              <Chart option={webAnalyticOption} height={320} />
             </div>
           </CardContent>
         </Card>
@@ -470,12 +474,7 @@ export default function Analysis() {
           <CardContent>
             <div className="flex flex-col items-center gap-2">
               <div className="w-full max-w-[180px]">
-                <Chart
-                  type="donut"
-                  height={320}
-                  options={deviceChartOptions}
-                  series={sessionDevices.map((d) => d.value)}
-                />
+                <Chart option={deviceOption} height={320} />
               </div>
               <div className="flex justify-center gap-4 mt-2">
                 {sessionDevices.map((d) => (

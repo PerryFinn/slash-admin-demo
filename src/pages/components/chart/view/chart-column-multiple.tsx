@@ -11,22 +11,18 @@ const series = [
   },
 ];
 export default function ChartColumnMultiple() {
-  const chartOptions = useChart({
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ["transparent"],
-    },
-    xaxis: {
-      categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    },
-    tooltip: {
-      y: {
-        formatter: (value: number) => `$ ${value} thousands`,
-      },
-    },
-    plotOptions: { bar: { columnWidth: "36%" } },
+  const categories = ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+  const option = useChart({
+    tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+    xAxis: { type: "category", data: categories },
+    yAxis: { type: "value" },
+    series: series.map((s) => ({
+      name: s.name,
+      type: "bar",
+      data: s.data,
+      barWidth: 24,
+    })),
   });
 
-  return <Chart type="bar" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }

@@ -1,5 +1,4 @@
 import { Chart, useChart } from "@/components/chart";
-import { themeVars } from "@/theme/theme-vars";
 
 const series = [
   {
@@ -16,34 +15,24 @@ const series = [
   },
 ];
 export default function ChartRadar() {
-  const chartOptions = useChart({
-    stroke: {
-      width: 2,
+  const categories = ["2011", "2012", "2013", "2014", "2015", "2016"];
+  const maxByIndex = categories.map((_, i) => Math.max(...series.map((s) => s.data[i] ?? 0)));
+  const option = useChart({
+    legend: { show: true, bottom: 0, left: "center" },
+    tooltip: { trigger: "item" },
+    radar: {
+      radius: "70%",
+      indicator: categories.map((name, i) => ({ name, max: Math.ceil(maxByIndex[i] * 1.2) || 1 })),
+      splitNumber: 4,
     },
-    fill: {
-      opacity: 0.1,
-    },
-    legend: {
-      floating: true,
-      position: "bottom",
-      horizontalAlign: "center",
-    },
-    xaxis: {
-      categories: ["2011", "2012", "2013", "2014", "2015", "2016"],
-      labels: {
-        style: {
-          colors: [
-            themeVars.colors.text.secondary,
-            themeVars.colors.text.secondary,
-            themeVars.colors.text.secondary,
-            themeVars.colors.text.secondary,
-            themeVars.colors.text.secondary,
-            themeVars.colors.text.secondary,
-          ],
-        },
+    series: [
+      {
+        type: "radar",
+        areaStyle: { opacity: 0.1 },
+        data: series.map((s) => ({ name: s.name, value: s.data })),
       },
-    },
+    ],
   });
 
-  return <Chart type="radar" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }

@@ -95,20 +95,69 @@ const totalIncome = {
 
 export default function Workbench() {
   const [activeTab, setActiveTab] = useState("All Transaction");
-  const chartOptions = useChart({
-    xaxis: { categories: monthlyRevenue.categories },
-    chart: { toolbar: { show: false } },
-    grid: { show: false },
-    stroke: { curve: "smooth" },
-    dataLabels: { enabled: false },
-    yaxis: { show: false },
-    legend: { show: false },
+  const monthlyRevenueOption = useChart({
+    grid: { left: 0, right: 0, top: 8, bottom: 0, containLabel: false },
+    xAxis: {
+      type: "category",
+      data: monthlyRevenue.categories,
+      boundaryGap: false,
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { show: false },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { show: false },
+      splitLine: { show: false },
+    },
+    tooltip: { trigger: "axis" },
+    series: monthlyRevenue.series.map((s) => ({
+      name: s.name,
+      type: "line",
+      smooth: true,
+      showSymbol: false,
+      lineStyle: { width: 2 },
+      areaStyle: { opacity: 0.2 },
+      data: s.data,
+    })),
   });
-  const donutOptions = useChart({
-    labels: totalIncome.labels,
-    legend: { show: false },
-    dataLabels: { enabled: false },
-    plotOptions: { pie: { donut: { size: "70%" } } },
+
+  const projectOverviewSparklineOption = useChart({
+    grid: { left: 0, right: 0, top: 0, bottom: 0 },
+    tooltip: { show: false },
+    xAxis: { type: "category", show: false, boundaryGap: false, data: Array.from({ length: 8 }, (_, i) => i + 1) },
+    yAxis: { type: "value", show: false },
+    series: [
+      {
+        type: "line",
+        smooth: true,
+        showSymbol: false,
+        lineStyle: { color: "#ef4444", width: 2 },
+        data: [10, 20, 15, 30, 25, 40, 35, 20],
+      },
+    ],
+  });
+
+  const totalIncomeColors = ["#3b82f6", "#f59e42", "#10b981", "#6366f1"];
+  const totalIncomeOption = useChart({
+    tooltip: { trigger: "item" },
+    series: [
+      {
+        type: "pie",
+        radius: ["45%", "70%"],
+        avoidLabelOverlap: true,
+        label: { show: false },
+        labelLine: { show: false },
+        data: totalIncome.labels.map((name, i) => ({
+          name,
+          value: totalIncome.series[i],
+          itemStyle: { color: totalIncomeColors[i] },
+        })),
+      },
+    ],
   });
 
   // throw new Error("test error"); // 注释掉直接抛错，改用演示组件
@@ -162,7 +211,7 @@ export default function Workbench() {
                 {monthlyRevenue.percent}%
               </span>
             </div>
-            <Chart type="area" height={220} options={chartOptions} series={monthlyRevenue.series} />
+            <Chart option={monthlyRevenueOption} height={220} />
           </CardContent>
         </Card>
         <Card className="flex flex-col gap-4 p-6">
@@ -214,18 +263,7 @@ export default function Workbench() {
             </div>
           </div>
           <div className="w-full h-16 mt-4">
-            <Chart
-              type="line"
-              height={60}
-              options={useChart({
-                chart: { sparkline: { enabled: true } },
-                colors: ["#ef4444"],
-                grid: { show: false },
-                yaxis: { show: false },
-                tooltip: { enabled: false },
-              })}
-              series={[{ data: [10, 20, 15, 30, 25, 40, 35, 20] }]}
-            />
+            <Chart option={projectOverviewSparklineOption} height={60} />
           </div>
         </Card>
         <Card className="flex flex-col gap-4 p-6 items-center justify-center">
@@ -309,7 +347,7 @@ export default function Workbench() {
             Total Income
           </Text>
           <div className="flex-1 flex flex-col items-center justify-center">
-            <Chart type="donut" height={180} options={donutOptions} series={totalIncome.series} />
+            <Chart option={totalIncomeOption} height={180} />
             <div className="w-full mt-4">
               {totalIncome.details.map((item, i) => (
                 <div key={item.label} className="flex items-center justify-between mb-2">

@@ -1,35 +1,67 @@
-import type { Props as ApexChartProps } from "react-apexcharts";
-import ApexChart from "react-apexcharts";
+import type { EChartsOption } from "echarts";
+import * as echarts from "echarts";
+import { useEffect, useRef } from "react";
+import { cn } from "@/utils";
 import "./styles.css";
 
-export function Chart(props: ApexChartProps) {
-  return (
-    <div className="apexcharts-wrapper">
-      <ApexChart
-        {...props}
-        options={{
-          ...props.options,
-          chart: {
-            ...props.options?.chart,
-            // 优化响应式性能
-            animations: {
-              ...props.options?.chart?.animations,
-              enabled: true,
-              speed: 200, // 减少动画时间
-              animateGradually: {
-                enabled: false, // 禁用渐进动画
-              },
-              dynamicAnimation: {
-                enabled: true,
-                speed: 200, // 减少动态动画时间
-              },
-            },
-            // 启用硬件加速
-            redrawOnParentResize: true,
-            redrawOnWindowResize: true,
-          },
-        }}
-      />
-    </div>
-  );
+const DEFAULT_HEIGHT_PX = 320;
+
+type EChartsInstance = ReturnType<typeof echarts.init>;
+
+export type ChartProps = {
+  option: EChartsOption;
+  height?: number;
+  width?: number | string;
+  className?: string;
+  renderer?: "canvas" | "svg";
+};
+
+export function Chart({
+  option,
+  height = DEFAULT_HEIGHT_PX,
+  width = "100%",
+  className,
+  renderer = "canvas",
+}: ChartProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const chartRef = useRef<EChartsInstance | null>(null);
+
+  useEffect(() => {
+    const dom = containerRef.current;
+    if (!dom) return;
+
+    const instance = echarts.init(dom, undefined, { renderer });
+    chartRef.current = instance;
+
+    return () => {
+      instance.dispose();
+      chartRef.current = null;
+    };
+  }, [renderer]);
+
+  useEffect(() => {
+    const instance = chartRef.current;
+    if (!instance) return;
+
+    instance.setOption(option, { notMerge: true, lazyUpdate: true });
+  }, [option]);
+
+  useEffect(() => {
+    const dom = containerRef.current;
+    const instance = chartRef.current;
+    if (!dom || !instance) return;
+
+    const handleResize = () => instance.resize();
+
+    const resizeObserver = typeof ResizeObserver === "undefined" ? undefined : new ResizeObserver(handleResize);
+    resizeObserver?.observe(dom);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      resizeObserver?.disconnect();
+    };
+  }, []);
+
+  return <div ref={containerRef} className={cn("echarts-wrapper", className)} style={{ height, width }} />;
 }

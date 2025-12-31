@@ -7,40 +7,29 @@ const series = [
   { name: "Product D", data: [21, 7, 25, 13, 22, 8] },
 ];
 export default function ChartColumnStacked() {
-  const chartOptions = useChart({
-    chart: {
-      stacked: true,
-      zoom: {
-        enabled: true,
-      },
-    },
-    legend: {
-      itemMargin: {
-        vertical: 8,
-      },
-      position: "right",
-      offsetY: 20,
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: "16%",
-      },
-    },
-    stroke: {
-      show: false,
-    },
-    xaxis: {
-      type: "datetime",
-      categories: [
-        "01/01/2011 GMT",
-        "01/02/2011 GMT",
-        "01/03/2011 GMT",
-        "01/04/2011 GMT",
-        "01/05/2011 GMT",
-        "01/06/2011 GMT",
-      ],
-    },
+  const categories = [
+    "01/01/2011 GMT",
+    "01/02/2011 GMT",
+    "01/03/2011 GMT",
+    "01/04/2011 GMT",
+    "01/05/2011 GMT",
+    "01/06/2011 GMT",
+  ];
+  const option = useChart({
+    grid: { left: 24, right: 96, top: 16, bottom: 0, containLabel: true },
+    tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+    legend: { show: true, right: 0, top: 20, orient: "vertical" },
+    xAxis: { type: "category", data: categories },
+    yAxis: { type: "value" },
+    series: series.map((s) => ({
+      name: s.name,
+      type: "bar",
+      stack: "total",
+      emphasis: { focus: "series" },
+      data: s.data,
+      barWidth: 16,
+    })),
   });
 
-  return <Chart type="bar" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }

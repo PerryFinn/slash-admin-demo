@@ -1,36 +1,60 @@
 import { Chart, useChart } from "@/components/chart";
+import { useSettings } from "@/store/settingStore";
+import { getResolvedThemeTokens } from "@/theme/theme-vars";
 import { fNumber } from "@/utils/format-number";
+import { rgbAlpha } from "@/utils/theme";
 
 const series = [44, 55];
 export default function ChartRadial() {
-  const chartOptions = useChart({
-    chart: {
-      sparkline: {
-        enabled: true,
-      },
-    },
-    labels: ["Apples", "Oranges"],
-    legend: {
-      floating: true,
-      position: "bottom",
-      horizontalAlign: "center",
-    },
-    plotOptions: {
-      radialBar: {
-        hollow: {
-          size: "68%",
-        },
-        dataLabels: {
-          value: {
-            offsetY: 16,
-          },
-          total: {
-            formatter: () => fNumber(2324),
-          },
+  const { themeMode, themeColorPresets } = useSettings();
+  const tokens = getResolvedThemeTokens({ themeMode, themeColorPresets });
+  const labels = ["Apples", "Oranges"];
+  const trackColor = rgbAlpha(tokens.colors.palette.gray[500], 0.2);
+  const ringColors = [tokens.colors.palette.primary.default, tokens.colors.palette.info.default];
+
+  const option = useChart({
+    tooltip: { trigger: "item" },
+    legend: { show: true, bottom: 0, left: "center" },
+    graphic: [
+      {
+        type: "text",
+        left: "center",
+        top: "44%",
+        style: {
+          text: fNumber(2324),
+          fontSize: 22,
+          fontWeight: 700,
+          fill: tokens.colors.text.primary,
         },
       },
-    },
+      {
+        type: "text",
+        left: "center",
+        top: "54%",
+        style: {
+          text: "Total",
+          fontSize: 12,
+          fill: tokens.colors.text.secondary,
+        },
+      },
+    ],
+    series: labels.map((name, index) => ({
+      name,
+      type: "gauge",
+      startAngle: 90,
+      endAngle: -270,
+      radius: index === 0 ? "90%" : "70%",
+      pointer: { show: false },
+      progress: { show: true, roundCap: true, itemStyle: { color: ringColors[index] } },
+      axisLine: { lineStyle: { width: 12, color: [[1, trackColor]] } },
+      axisTick: { show: false },
+      splitLine: { show: false },
+      axisLabel: { show: false },
+      title: { show: false },
+      detail: { show: false },
+      data: [{ value: series[index], name }],
+    })),
   });
 
-  return <Chart type="radialBar" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }

@@ -7,17 +7,19 @@ const series = [
   },
 ];
 export default function ChartLine() {
-  const chartOptions = useChart({
-    xaxis: {
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-    },
-    tooltip: {
-      x: {
-        show: false,
-      },
-      marker: { show: false },
-    },
+  const categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+  const option = useChart({
+    xAxis: { type: "category", data: categories, boundaryGap: false },
+    yAxis: { type: "value" },
+    tooltip: { trigger: "axis" },
+    series: series.map((s) => ({
+      name: s.name,
+      type: "line",
+      smooth: true,
+      showSymbol: false,
+      data: s.data,
+    })),
   });
 
-  return <Chart type="line" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }

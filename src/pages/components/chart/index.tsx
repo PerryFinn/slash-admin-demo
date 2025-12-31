@@ -17,8 +17,8 @@ export default function ChartPage() {
   return (
     <>
       <Button variant="link" asChild>
-        <a href="https://apexcharts.com" target="_blank" rel="noreferrer">
-          https://apexcharts.com
+        <a href="https://echarts.apache.org" target="_blank" rel="noreferrer">
+          https://echarts.apache.org
         </a>
       </Button>
 

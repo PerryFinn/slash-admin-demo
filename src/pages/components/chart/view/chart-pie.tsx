@@ -2,33 +2,19 @@ import { Chart, useChart } from "@/components/chart";
 
 const series = [44, 55, 13, 43];
 export default function ChartPie() {
-  const chartOptions = useChart({
-    labels: ["America", "Asia", "Europe", "Africa"],
-    legend: {
-      horizontalAlign: "center",
-    },
-    stroke: {
-      show: false,
-    },
-    dataLabels: {
-      enabled: true,
-      dropShadow: {
-        enabled: false,
+  const labels = ["America", "Asia", "Europe", "Africa"];
+  const option = useChart({
+    tooltip: { trigger: "item" },
+    legend: { show: true, bottom: 0, left: "center" },
+    series: [
+      {
+        type: "pie",
+        radius: "70%",
+        label: { show: true },
+        data: labels.map((name, i) => ({ name, value: series[i] })),
       },
-    },
-    tooltip: {
-      fillSeriesColor: false,
-    },
-    plotOptions: {
-      pie: {
-        donut: {
-          labels: {
-            show: false,
-          },
-        },
-      },
-    },
+    ],
   });
 
-  return <Chart type="pie" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }

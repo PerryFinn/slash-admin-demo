@@ -2,24 +2,18 @@ import { Chart, useChart } from "@/components/chart";
 
 const series = [{ name: "Net Profit", data: [44, 55, 57, 56, 61, 58, 63, 60, 66] }];
 export default function ChartColumnSingle() {
-  const chartOptions = useChart({
-    plotOptions: {
-      bar: {
-        columnWidth: "16%",
-      },
-    },
-    stroke: {
-      show: false,
-    },
-    xaxis: {
-      categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-    },
-    tooltip: {
-      y: {
-        formatter: (value: number) => `$ ${value} thousands`,
-      },
-    },
+  const categories = ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+  const option = useChart({
+    tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+    xAxis: { type: "category", data: categories },
+    yAxis: { type: "value" },
+    series: series.map((s) => ({
+      name: s.name,
+      type: "bar",
+      data: s.data,
+      barWidth: 16,
+    })),
   });
 
-  return <Chart type="bar" series={series} options={chartOptions} height={320} />;
+  return <Chart option={option} height={320} />;
 }
