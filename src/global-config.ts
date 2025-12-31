@@ -1,4 +1,4 @@
-import packageJson from "../package.json";
+import { version as pkgVersion } from "../package.json";
 
 /**
  * Global application configuration type definition
@@ -27,7 +27,7 @@ export type GlobalConfig = {
  */
 export const GLOBAL_CONFIG: GlobalConfig = {
 	appName: "Slash Admin",
-	appVersion: packageJson.version,
+	appVersion: pkgVersion,
 	defaultRoute: import.meta.env.VITE_APP_DEFAULT_ROUTE || "/workbench",
 	publicPath: import.meta.env.VITE_APP_PUBLIC_PATH || "/",
 	apiBaseUrl: import.meta.env.VITE_APP_API_BASE_URL || "/api",

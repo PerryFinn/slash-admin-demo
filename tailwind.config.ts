@@ -1,26 +1,26 @@
 import type { Config } from "tailwindcss";
 import { breakpointsTokens } from "./src/theme/tokens/breakpoints";
 import { HtmlDataAttribute } from "./src/types/enum";
-import { creatColorChannel, createTailwinConfg } from "./src/utils/theme";
+import { createColorChannel, createTailwindConfig } from "./src/utils/theme";
 
 export default {
 	darkMode: ["selector", `[${HtmlDataAttribute.ThemeMode}='dark']`],
 	content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
-		fontFamily: createTailwinConfg("typography.fontFamily"),
+		fontFamily: createTailwindConfig("typography.fontFamily"),
 		extend: {
 			colors: {
 				// slash admin theme tokens
-				primary: creatColorChannel("colors.palette.primary"),
-				success: creatColorChannel("colors.palette.success"),
-				warning: creatColorChannel("colors.palette.warning"),
-				error: creatColorChannel("colors.palette.error"),
-				info: creatColorChannel("colors.palette.info"),
-				gray: creatColorChannel("colors.palette.gray"),
-				common: creatColorChannel("colors.common"),
-				text: creatColorChannel("colors.text"),
-				bg: creatColorChannel("colors.background"),
-				action: createTailwinConfg("colors.action"),
+				primary: createColorChannel("colors.palette.primary"),
+				success: createColorChannel("colors.palette.success"),
+				warning: createColorChannel("colors.palette.warning"),
+				error: createColorChannel("colors.palette.error"),
+				info: createColorChannel("colors.palette.info"),
+				gray: createColorChannel("colors.palette.gray"),
+				common: createColorChannel("colors.common"),
+				text: createColorChannel("colors.text"),
+				bg: createColorChannel("colors.background"),
+				action: createTailwindConfig("colors.action"),
 
 				// shadcn ui theme tokens
 				background: "var(--background)",
@@ -54,11 +54,11 @@ export default {
 				sidebarBorder: "var(--sidebar-border)",
 				sidebarRing: "var(--sidebar-ring)",
 			},
-			opacity: createTailwinConfg("opacity"),
-			borderRadius: createTailwinConfg("borderRadius"),
-			boxShadow: createTailwinConfg("shadows"),
-			spacing: createTailwinConfg("spacing"),
-			zIndex: createTailwinConfg("zIndex"),
+			opacity: createTailwindConfig("opacity"),
+			borderRadius: createTailwindConfig("borderRadius"),
+			boxShadow: createTailwindConfig("shadows"),
+			spacing: createTailwindConfig("spacing"),
+			zIndex: createTailwindConfig("zIndex"),
 			screens: breakpointsTokens,
 		},
 	},

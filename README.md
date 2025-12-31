@@ -1,11 +1,11 @@
-<div align="center"> 
-<br> 
+<div align="center">
 <br>
-<img src="./src/assets/icons/ic-logo-badge.svg" height="140" />
+<br>
+<img src="./src/assets/icons/ic-logo-badge.svg" color="green" height="140" />
 <h3> Slash Admin </h3>
   <p>
     <p style="font-size: 14px">
-      Slash Admin is a modern admin dashboard template built with React 19, Vite, shadcn/ui, and TypeScript. It is designed to help developers quickly create powerful admin management systems.
+      Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、shadcn/ui 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统。
     </p>
     <br />
     <br />
@@ -19,82 +19,85 @@
     <a href="https://trendshift.io/repositories/6387" target="_blank"><img src="https://trendshift.io/api/badge/repositories/6387" alt="d3george%2Fslash-admin | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </div>
 
-**English** | [中文](./README.zh-CN.md)
+**中文** | [English](./README.md)
 
-##  Sponsor
-<div style="display: flex; gap: 50px"> 
+## 赞助
+
+<div style="display: flex; gap: 50px">
   <img style="width:300px" src="https://d3george.github.io/github-static/pay/weixin.jpg" >
   <img style="width:300px" src="https://d3george.github.io/github-static/pay/buymeacoffee.png" />
 </div>
 
-## Preview
-+ https://admin.slashspaces.com/
+## 预览
+
++ <https://admin.slashspaces.com/>
 
 |![login.png](https://d3george.github.io/github-static/slash-admin/sa-web-light.jpeg)|![login_dark.png](https://d3george.github.io/github-static/slash-admin/sa-web-dark.jpeg)
 | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 |![analysis.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-light.jpeg)|![workbench.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-dark.jpeg)
-| | 
+| |
 
-## Features
+## 特性
 
-- Built using React 19 hooks.
-- Powered by Vite for rapid development and hot module replacement.
-- Integrates shadcn/ui, providing a rich set of UI components and design patterns.
-- Written in TypeScript, offering type safety and an improved development experience.
-- Responsive design, adapting to various screen sizes and devices.
-- Flexible routing configuration, supporting nested routes.
-- Integrated access control based on user roles.
-- Supports internationalization for easy language switching.
-- Includes common admin features like user management, role management, and permission management.
-- Customizable themes and styles to meet your branding needs.
-- Mocking solution based on MSW and Faker.js.
-- State management using Zustand.
-- Data fetching using React-Query.
++ 使用 React 19 hooks 进行构建。
++ 基于 Vite 进行快速开发和热模块替换。
++ 集成 shadcn/ui，提供丰富的 UI 组件和设计模式。
++ 使用 TypeScript 编写，提供类型安全性和更好的开发体验。
++ 响应式设计，适应各种屏幕尺寸和设备。
++ 灵活的路由配置，支持多级嵌套路由。
++ 集成权限管理，根据用户角色控制页面访问权限。
++ 集成国际化支持，轻松切换多语言。
++ 集成常见的后台管理功能，如用户管理、角色管理、权限管理等。
++ 可定制的主题和样式，以满足您的品牌需求。
++ 基于 MSW 和 Faker.js 的Mock方案
++ 使用 Zustand 进行状态管理
++ 使用 React-Query 进行数据获取
 
-## Quick Start
+## 快速开始
 
-### Get the Project Code
+### 获取项目代码
 
 ```bash
 git clone https://github.com/d3george/slash-admin.git
 ```
 
-### Install Dependencies
+### 安装依赖
 
-In the project's root directory, run the following command to install project dependencies:
+在项目根目录下运行以下命令安装项目依赖：
 
 ```bash
 pnpm install
 ```
 
-### Start the Development Server
+### 启动开发服务器
 
-Run the following command to start the development server:
+运行以下命令以启动开发服务器：
 
 ```bash
 pnpm dev
 ```
 
-Visit [http://localhost:3001](http://localhost:3001) to view your application.
+访问 [http://localhost:3001](http://localhost:3001) 查看您的应用程序。
 
-### Build for Production
+### 构建生产版本
 
-Run the following command to build the production version:
+运行以下命令以构建生产版本：
 
 ```bash
 pnpm build
 ```
 
-## Git Contribution submission specification
-- `feat` new features
-- `fix`  fix the
-- `docs` documentation or comments
-- `style` code format (changes that do not affect code execution)
-- `refactor` refactor
-- `perf` performance optimization
-- `revert` revert commit
-- `test` test related
-- `chore` changes in the construction process or auxiliary tools
-- `ci` modify CI configuration and scripts
-- `types` type definition file changes
-- `wip` in development
+## Git贡献提交规范
+
++ `feat` 新功能
++ `fix` 修复bug
++ `docs` 文档注释
++ `style` 代码格式(不影响代码运行的变动)
++ `refactor` 重构
++ `perf` 性能优化
++ `revert` 回滚commit
++ `test` 测试相关
++ `chore` 构建过程或辅助工具的变动
++ `ci` 修改CI配置、脚本
++ `types` 类型定义文件修改
++ `wip` 开发中
