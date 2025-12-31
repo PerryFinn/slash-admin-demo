@@ -32,6 +32,7 @@ You can create a lightweight PRD directly within Cursor:
     Here's the feature I want to build: [Describe your feature in detail]
     Reference these files to help you: [Optional: @file1.py @file2.ts]
     ```
+
     *(Pro Tip: For complex PRDs, using MAX mode in Cursor is highly recommended if your budget allows for more comprehensive generation.)*
 
     ![Example of initiating PRD creation](https://pbs.twimg.com/media/Go6DDlyX0AAS7JE?format=jpg&name=large)
@@ -46,6 +47,7 @@ With your PRD drafted (e.g., `MyFeature-PRD.md`), the next step is to generate a
     ```text
     Now take @MyFeature-PRD.md and create tasks using @generate-tasks.mdc
     ```
+
     *(Note: Replace `@MyFeature-PRD.md` with the actual filename of the PRD you generated in step 1.)*
 
     ![Example of generating tasks from PRD](https://pbs.twimg.com/media/Go6FITbWkAA-RCT?format=jpg&name=medium)
@@ -66,6 +68,7 @@ To ensure methodical progress and allow for verification, we'll use `process-tas
     ```text
     Please start on task 1.1 and use @process-task-list.mdc
     ```
+
     *(Important: You only need to reference `@process-task-list.mdc` for the *first* task. The instructions within it guide the AI for subsequent tasks.)*
 
     The AI will attempt the task and then prompt you to review.

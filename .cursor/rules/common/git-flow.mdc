@@ -8,6 +8,7 @@ alwaysApply: false
 ## Main Branches
 
 ### main (or master)
+
 - Contains production-ready code
 - Never commit directly to main
 - Only accepts merges from:
@@ -16,6 +17,7 @@ alwaysApply: false
 - Must be tagged with version number after each merge
 
 ### develop
+
 - Main development branch
 - Contains latest delivered development changes
 - Source branch for feature branches
@@ -24,6 +26,7 @@ alwaysApply: false
 ## Supporting Branches
 
 ### feature/*
+
 - Branch from: develop
 - Merge back into: develop
 - Naming convention: feature/[issue-id]-descriptive-name
@@ -32,8 +35,9 @@ alwaysApply: false
 - Delete after merge
 
 ### release/*
+
 - Branch from: develop
-- Merge back into: 
+- Merge back into:
   - main
   - develop
 - Naming convention: release/vX.Y.Z
@@ -43,6 +47,7 @@ alwaysApply: false
 - Delete after merge
 
 ### hotfix/*
+
 - Branch from: main
 - Merge back into:
   - main
@@ -56,9 +61,9 @@ alwaysApply: false
 
 - Format: `type(scope): description`
 - Types:
-  - build: 
+  - build:
   - chore: Maintenance tasks
-  - ci: 
+  - ci:
   - docs: Documentation changes
   - feat: New feature
   - fix: Bug fix
@@ -70,6 +75,7 @@ alwaysApply: false
 ## Version Control
 
 ### Semantic Versioning
+
 - MAJOR version for incompatible API changes
 - MINOR version for backwards-compatible functionality
 - PATCH version for backwards-compatible bug fixes
@@ -86,6 +92,7 @@ alwaysApply: false
 ## Branch Protection Rules
 
 ### main & develop
+
 - Require pull request reviews
 - Require status checks to pass
 - Require branches to be up to date
@@ -113,4 +120,4 @@ alwaysApply: false
 5. After merge to main:
    - Tag release
    - Merge back to develop
-   - Delete hotfix branch 
+   - Delete hotfix branch

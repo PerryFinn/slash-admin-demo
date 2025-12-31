@@ -1,41 +1,6 @@
-<div align="center">
-<br>
-<br>
-<img src="./src/assets/icons/ic-logo-badge.svg" color="green" height="140" />
-<h3> Slash Admin </h3>
-  <p>
-    <p style="font-size: 14px">
-      Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、shadcn/ui 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统。
-    </p>
-    <br />
-    <br />
-    <a href="https://admin.slashspaces.com/">Preview</a>
-    ·
-    <a href="https://discord.gg/fXemAXVNDa">Discord</a>
-    ·
-    <a href="https://docs-admin.slashspaces.com/">Document</a>
-    <br />
-    <br />
-    <a href="https://trendshift.io/repositories/6387" target="_blank"><img src="https://trendshift.io/api/badge/repositories/6387" alt="d3george%2Fslash-admin | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-</div>
+# Slash Admin
 
-**中文** | [English](./README.md)
-
-## 赞助
-
-<div style="display: flex; gap: 50px">
-  <img style="width:300px" src="https://d3george.github.io/github-static/pay/weixin.jpg" >
-  <img style="width:300px" src="https://d3george.github.io/github-static/pay/buymeacoffee.png" />
-</div>
-
-## 预览
-
-+ <https://admin.slashspaces.com/>
-
-|![login.png](https://d3george.github.io/github-static/slash-admin/sa-web-light.jpeg)|![login_dark.png](https://d3george.github.io/github-static/slash-admin/sa-web-dark.jpeg)
-| ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-|![analysis.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-light.jpeg)|![workbench.png](https://d3george.github.io/github-static/slash-admin/sa-mobile-dark.jpeg)
-| |
+Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、shadcn/ui 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统。
 
 ## 特性
 
@@ -87,17 +52,36 @@ pnpm dev
 pnpm build
 ```
 
-## Git贡献提交规范
+## 文件结构
 
-+ `feat` 新功能
-+ `fix` 修复bug
-+ `docs` 文档注释
-+ `style` 代码格式(不影响代码运行的变动)
-+ `refactor` 重构
-+ `perf` 性能优化
-+ `revert` 回滚commit
-+ `test` 测试相关
-+ `chore` 构建过程或辅助工具的变动
-+ `ci` 修改CI配置、脚本
-+ `types` 类型定义文件修改
-+ `wip` 开发中
+## Project Structure
+
+```text
+├─ public/
+│  └─ mockServiceWorker.js      # MSW startup script (auto-generated service worker script)
+├─ src/                         # Core source code
+│  ├─ _mock/                    # Mock API data and handlers
+│  ├─ api/                      # API request services
+│  ├─ assets/                   # Static assets (images, icons)
+│  ├─ components/               # Global reusable components
+│  ├─ hooks/                    # Custom React Hooks
+│  ├─ layouts/                  # Page layout components
+│  ├─ locales/                  # Internationalization (i18n) language packs
+│  ├─ pages/                    # Page components (corresponding to routes)
+│  ├─ routes/                   # Routing configuration
+│  ├─ store/                    # Global state management (Zustand)
+│  ├─ theme/                    # Theme and style configuration
+│  ├─ types/                    # Global TypeScript type definitions
+│  ├─ ui/                       # Base UI components (shadcn/ui)
+│  ├─ utils/                    # Utility functions
+│  ├─ App.tsx                   # Root application component
+│  └─ main.tsx                  # Application entry point
+├─ .env                         # Environment variables file 
+├─ .env.development             # Development environment variables 
+├─ .env.production              # Production environment variables 
+├─ package.json                 # Project dependencies and scripts
+├─ vite.config.ts                # Vite configuration file
+├─ tailwind.config.ts            # Tailwind CSS configuration file
+├─ tsconfig.ts                   # TypeScript configuration file
+└─ biome.json                   # Biome formatter/linter configuration
+```
