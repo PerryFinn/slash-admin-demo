@@ -8,7 +8,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/public", "!**/.vscode", "!**/src/ui"]
+    "includes": ["**", "!**/public", "!**/.vscode", "!**/src/ui", "!src/global.css"]
   },
   "formatter": {
     "enabled": true,
@@ -24,7 +24,8 @@
         "noExplicitAny": "off"
       },
       "a11y": {
-        "useKeyWithClickEvents": "off"
+        "useKeyWithClickEvents": "off",
+        "noStaticElementInteractions": "off"
       }
     }
   },
