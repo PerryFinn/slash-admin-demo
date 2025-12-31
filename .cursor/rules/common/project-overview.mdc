@@ -1,6 +1,6 @@
 ---
 description: Guidelines for Current Project Tech Stack and Structure
-globs: 
+globs:
 alwaysApply: true
 ---
 
@@ -38,7 +38,7 @@ alwaysApply: true
 
 ### Data Visualization
 
-* **[ApexCharts](https://apexcharts.com)**: For creating interactive charts and data visualizations.
+* **[ECharts](https://echarts.apache.org)**: For creating interactive charts and data visualizations.
 
 ### Dev Tools & Code Quality
 
@@ -69,9 +69,9 @@ alwaysApply: true
 │  ├─ utils/                    # Utility functions
 │  ├─ App.tsx                   # Root application component
 │  └─ main.tsx                  # Application entry point
-├─ .env                         # Environment variables file 
-├─ .env.development             # Development environment variables 
-├─ .env.production              # Production environment variables 
+├─ .env                         # Environment variables file
+├─ .env.development             # Development environment variables
+├─ .env.production              # Production environment variables
 ├─ package.json                 # Project dependencies and scripts
 ├─ vite.config.ts                # Vite configuration file
 ├─ tailwind.config.ts            # Tailwind CSS configuration file
