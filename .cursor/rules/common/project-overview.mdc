@@ -12,7 +12,7 @@ alwaysApply: true
 
 * **[React](https://react.dev) (v19)**: The core UI framework for the project.
 * **[Vite](https://cn.vite.dev/)**: A build tool for dement and bundling, providing a fast dev servmized build output.
-* **[TypeScript](https://www.typesc)**: The primary development language, addchecking to JavaScript.
+* **[TypeScript](https://www.typescriptlang.org/)**: The primary development language, addchecking to JavaScript.
 
 ### UI & Styling
 
