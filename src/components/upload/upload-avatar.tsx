@@ -5,7 +5,7 @@ import { Icon } from "@/components/icon";
 import { themeVars } from "@/theme/theme-vars";
 import { Text } from "@/ui/typography";
 import { fBytes } from "@/utils/format-number";
-import { StyledUploadAvatar } from "./styles";
+import styles from "./styles.module.less";
 import { beforeAvatarUpload, getBlobUrl } from "./utils";
 
 interface Props extends UploadProps {
@@ -66,7 +66,7 @@ export function UploadAvatar({ helperText, defaultAvatar = "", ...other }: Props
   const renderHelpText = <div className="text-center">{helperText || defaultHelperText}</div>;
 
   return (
-    <StyledUploadAvatar>
+    <div className={styles.uploadAvatar}>
       <Upload
         name="avatar"
         showUploadList={false}
@@ -79,6 +79,6 @@ export function UploadAvatar({ helperText, defaultAvatar = "", ...other }: Props
         {renderContent}
       </Upload>
       {renderHelpText}
-    </StyledUploadAvatar>
+    </div>
   );
 }

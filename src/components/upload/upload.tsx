@@ -1,7 +1,8 @@
 import type { UploadProps } from "antd";
 import { Upload as AntdUpload } from "antd";
 import type { ItemRender } from "antd/es/upload/interface";
-import { StyledUpload } from "./styles";
+import { cn } from "@/utils";
+import styles from "./styles.module.less";
 import UploadIllustration from "./upload-illustration";
 import UploadListItem from "./upload-list-item";
 
@@ -19,7 +20,7 @@ const itemRender: (thumbnail: boolean) => ItemRender = (thumbnail) => {
 };
 export function Upload({ thumbnail = false, ...other }: Props) {
   return (
-    <StyledUpload $thumbnail={thumbnail}>
+    <div className={cn(styles.upload, thumbnail && styles.thumbnail)}>
       <Dragger {...other} itemRender={itemRender(thumbnail)}>
         <div className="opacity-100 hover:opacity-80">
           <p className="m-auto max-w-[200px]">
@@ -35,6 +36,6 @@ export function Upload({ thumbnail = false, ...other }: Props) {
           </div>
         </div>
       </Dragger>
-    </StyledUpload>
+    </div>
   );
 }

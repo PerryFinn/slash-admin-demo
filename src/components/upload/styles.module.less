@@ -1,0 +1,45 @@
+.upload {
+  :global {
+    .ant-upload {
+      border: none !important;
+    }
+
+    .ant-upload-list {
+      display: block;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.thumbnail {
+  :global {
+    .ant-upload-list {
+      display: flex;
+    }
+  }
+}
+
+.uploadAvatar {
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  :global {
+    .ant-upload,
+    .ant-upload-select {
+      border: none !important;
+    }
+  }
+}
+
+.uploadBox {
+  :global {
+    .ant-upload {
+      border: none !important;
+    }
+
+    .ant-upload-list {
+      display: none;
+    }
+  }
+}
+
+

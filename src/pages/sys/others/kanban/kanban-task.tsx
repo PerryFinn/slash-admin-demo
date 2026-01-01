@@ -1,13 +1,14 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { type CSSProperties, memo, useState } from "react";
-import styled from "styled-components";
 import { Icon } from "@/components/icon";
 import { themeVars } from "@/theme/theme-vars";
 import { Avatar, AvatarImage } from "@/ui/avatar";
 import { Button } from "@/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/ui/select";
 import { Sheet, SheetContent, SheetHeader } from "@/ui/sheet";
+import { cn } from "@/utils";
+import styles from "./kanban-task.module.less";
 import TaskDetail from "./task-detail";
 import { type Task, TaskPriority } from "./types";
 
@@ -31,7 +32,13 @@ function KanbanTask({ id, task, isDragging }: Props) {
 
   return (
     <>
-      <Container ref={setNodeRef} style={style} {...attributes} {...listeners} $isDragging={!!isDragging}>
+      <div
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+        className={cn(styles.container, !!isDragging && styles.dragging)}
+      >
         <div>
           {attachments.length > 0 && <img src={attachments[0]} alt="" className="mb-4 rounded-md" />}
           <div onClick={() => setDrawerOpen(true)}>
@@ -60,7 +67,7 @@ function KanbanTask({ id, task, isDragging }: Props) {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
 
       <Sheet open={drawerOpen} modal={false} onOpenChange={setDrawerOpen}>
         <SheetContent className="w-[420px] p-0 [&>button]:hidden pointer-events-auto">
@@ -119,17 +126,3 @@ function TaskPrioritySvg({ taskPriority }: TaskPrioritySvgProps) {
       break;
   }
 }
-const Container = styled.div<{ $isDragging: boolean }>`
-	width: 248px;
-	border-radius: 12px;
-	padding: 16px;
-	margin-bottom: 16px;
-	font-weight: 400;
-	font-size: 12px;
-	background-color: ${themeVars.colors.background.default};
-	backdrop-filter: ${(props) => (props.$isDragging ? "blur(6px)" : "")};
-
-	&:hover {
-		box-shadow: ${themeVars.shadows["3xl"]};
-	}
-`;

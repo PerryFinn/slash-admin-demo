@@ -2,14 +2,14 @@ import type { UploadProps } from "antd";
 import Dragger from "antd/es/upload/Dragger";
 import type { ReactElement } from "react";
 import { Icon } from "@/components/icon";
-import { StyledUploadBox } from "./styles";
+import styles from "./styles.module.less";
 
 interface Props extends UploadProps {
   placeholder?: ReactElement;
 }
 export function UploadBox({ placeholder, ...other }: Props) {
   return (
-    <StyledUploadBox>
+    <div className={styles.uploadBox}>
       <Dragger {...other} showUploadList={false}>
         <div className="opacity-60 hover:opacity-50">
           {placeholder || (
@@ -19,6 +19,6 @@ export function UploadBox({ placeholder, ...other }: Props) {
           )}
         </div>
       </Dragger>
-    </StyledUploadBox>
+    </div>
   );
 }

@@ -7,14 +7,16 @@ import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import dayjs from "dayjs";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ThemeMode } from "#/enum";
 import { down, useMediaQuery } from "@/hooks";
 import { useSettings } from "@/store/settingStore";
 import { Card, CardContent } from "@/ui/card";
+import { cn } from "@/utils";
 import CalendarEvent from "./calendar-event";
 import CalendarEventForm, { type CalendarEventFormFieldType } from "./calendar-event-form";
 import CalendarHeader, { type HandleMoveArg, type ViewType } from "./calendar-header";
 import { INITIAL_EVENTS } from "./event-utils";
-import { StyledCalendar } from "./styles";
+import styles from "./styles.module.less";
 
 const DefaultEventInitValue = {
   id: faker.string.uuid(),
@@ -177,7 +179,7 @@ export default function Calendar() {
     <>
       <Card className="h-full w-full">
         <CardContent className="h-full w-full">
-          <StyledCalendar $themeMode={themeMode}>
+          <div className={cn(styles.calendar, themeMode === ThemeMode.Light ? styles.light : styles.dark)}>
             <CalendarHeader
               now={date}
               view={view}
@@ -200,7 +202,7 @@ export default function Calendar() {
               select={handleDateSelect}
               eventClick={handleEventClick}
             />
-          </StyledCalendar>
+          </div>
         </CardContent>
       </Card>
       <CalendarEventForm

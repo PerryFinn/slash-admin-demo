@@ -1,11 +1,12 @@
 import { Tabs } from "antd";
 import { useEffect, useRef } from "react";
-import styled from "styled-components";
 import { useRouter } from "@/routes/hooks";
+import { cn } from "@/utils";
 import SortableContainer from "./components/sortable-container";
 import { SortableItem } from "./components/sortable-item";
 import { TabItem } from "./components/tab-item";
 import { useMultiTabsStyle } from "./hooks/use-tab-style";
+import styles from "./index.module.less";
 import { useMultiTabsContext } from "./providers/multi-tabs-provider";
 import type { KeepAliveTab } from "./types";
 
@@ -70,7 +71,7 @@ export default function MultiTabs() {
   };
 
   return (
-    <StyledMultiTabs>
+    <div className={styles.multiTabs}>
       <Tabs
         size="small"
         type="card"
@@ -84,7 +85,10 @@ export default function MultiTabs() {
           return (
             <div style={style}>
               <SortableContainer items={tabs} onSortEnd={handleDragEnd} renderOverlay={renderOverlay}>
-                <ul ref={scrollContainer} className="flex overflow-x-auto w-full px-2 h-[32px] hide-scrollbar">
+                <ul
+                  ref={scrollContainer}
+                  className={cn("flex overflow-x-auto w-full px-2 h-[32px]", styles.hideScrollbar)}
+                >
                   {tabs.map((tab) => (
                     <SortableItem tab={tab} key={tab.key} onClick={() => handleTabClick(tab)} />
                   ))}
@@ -94,39 +98,6 @@ export default function MultiTabs() {
           );
         }}
       />
-    </StyledMultiTabs>
+    </div>
   );
 }
-
-const StyledMultiTabs = styled.div`
-  height: 100%;
-  margin-top: 2px;
-  
-  .anticon {
-    margin: 0px !important;
-  }
-  
-  .ant-tabs {
-    height: 100%;
-    .ant-tabs-content {
-      height: 100%;
-    }
-    .ant-tabs-tabpane {
-      height: 100%;
-      & > div {
-        height: 100%;
-      }
-    }
-  }
-
-  .hide-scrollbar {
-    overflow: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    will-change: transform;
- 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
