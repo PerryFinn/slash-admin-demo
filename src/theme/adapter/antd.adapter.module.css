@@ -1,0 +1,9 @@
+.tag {
+  border-radius: var(--borderRadius-md);
+  font-weight: 700;
+  padding: 0 var(--spacing-1);
+  margin: 0 var(--spacing-1);
+  border-width: 0;
+}
+
+

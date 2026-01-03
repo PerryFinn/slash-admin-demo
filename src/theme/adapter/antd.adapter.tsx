@@ -1,4 +1,3 @@
-import { StyleProvider } from "@ant-design/cssinjs";
 import type { ThemeConfig } from "antd";
 import { App, ConfigProvider, theme } from "antd";
 import { ThemeMode } from "#/enum";
@@ -8,6 +7,7 @@ import { removePx } from "@/utils/theme";
 import { baseThemeTokens } from "../tokens/base";
 import { darkColorTokens, lightColorTokens, presetsColors } from "../tokens/color";
 import type { UILibraryAdapter } from "../type";
+import styles from "./antd.adapter.module.css";
 
 export const AntdAdapter: UILibraryAdapter = ({ mode, children }) => {
   const { language } = useLocale();
@@ -58,19 +58,9 @@ export const AntdAdapter: UILibraryAdapter = ({ mode, children }) => {
     <ConfigProvider
       locale={language.antdLocal}
       theme={{ algorithm, token, components }}
-      tag={{
-        style: {
-          borderRadius: removePx(baseThemeTokens.borderRadius.md),
-          fontWeight: 700,
-          padding: `0 ${baseThemeTokens.spacing[1]}`,
-          margin: `0 ${baseThemeTokens.spacing[1]}`,
-          borderWidth: 0,
-        },
-      }}
+      tag={{ className: styles.tag }}
     >
-      <StyleProvider hashPriority="high">
-        <App>{children}</App>
-      </StyleProvider>
+      <App>{children}</App>
     </ConfigProvider>
   );
 };
