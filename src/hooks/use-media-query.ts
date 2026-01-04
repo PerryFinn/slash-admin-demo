@@ -33,21 +33,21 @@ const buildMediaQuery = (config: MediaQueryConfig | string): string => {
 };
 
 /**
- * React hook for handling media queries
+ * React 处理媒体查询的 Hook
  *
- * @param config - Media query configuration object or query string
- * @returns boolean - Returns true if the media query matches
+ * @param config - 媒体查询配置对象或查询字符串
+ * @returns boolean - 如果媒体查询匹配，则返回 true
  *
  * @example
- * // Basic usage - Mobile detection
+ * // 基本用法 - 移动设备检测
  * const isMobile = useMediaQuery({ maxWidth: 768 });
  *
  * @example
- * // Using predefined breakpoints
+ * // 使用预定义的断点
  * const isDesktop = useMediaQuery(up('lg'));
  *
  * @example
- * // Complex query - Tablet in landscape mode
+ * // 复杂查询 - 平板电脑横屏模式
  * const isTabletLandscape = useMediaQuery({
  *   minWidth: 768,
  *   maxWidth: 1024,
@@ -55,24 +55,24 @@ const buildMediaQuery = (config: MediaQueryConfig | string): string => {
  * });
  *
  * @example
- * // User preferences
+ * // 用户偏好
  * const isDarkMode = useMediaQuery({ prefersColorScheme: 'dark' });
  * const prefersReducedMotion = useMediaQuery({ prefersReducedMotion: true });
  *
  * @example
- * // Device capabilities
+ * // 设备能力
  * const isTouchDevice = useMediaQuery({ pointerType: 'coarse' });
  * const isRetina = useMediaQuery({ devicePixelRatio: 2 });
  *
  * @example
- * // Range queries using helpers
+ * // 范围查询使用辅助函数
  * const isTablet = useMediaQuery(between('sm', 'md'));
  *
  * @example
- * // Raw media query string
+ * // 原始媒体查询字符串
  * const isPortrait = useMediaQuery('(orientation: portrait)');
  *
- * @see {@link MediaQueryConfig} for all supported configuration options
+ * @see {@link MediaQueryConfig} 所有支持的配置选项
  */
 export const useMediaQuery = (config: MediaQueryConfig | string) => {
   // 服务器端渲染时默认为 false
