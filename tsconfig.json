@@ -25,6 +25,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": false,
+    "experimentalDecorators": true,
 
     "baseUrl": ".",
     "paths": {

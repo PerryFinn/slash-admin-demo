@@ -34,5 +34,9 @@
   "[html]":{
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "svg.preview.background": "dark-transparent"
+  "svg.preview.background": "dark-transparent",
+  "cSpell.words": [
+    "qrcode",
+    "screenfull"
+  ]
 }

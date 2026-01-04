@@ -33,7 +33,7 @@ axiosInstance.interceptors.response.use(
     const errMsg = response?.data?.message || message || "操作失败,系统异常!";
     toast.error(errMsg, { position: "top-center" });
     if (response?.status === 401) {
-      userStore.getState().actions.clearUserInfoAndToken();
+      userStore.clearUserInfoAndToken();
     }
     return Promise.reject(error);
   },

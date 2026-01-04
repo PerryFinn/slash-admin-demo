@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import zhCN from "@/locales/lang/zh_CN";
-import useUserStore from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import { BasicStatus, PermissionType } from "@/types/enum";
 
 /**
@@ -586,7 +586,7 @@ if (import.meta.hot) {
     const {
       userInfo,
       actions: { setUserInfo },
-    } = useUserStore.getState();
+    } = userStore;
 
     if (!userInfo?.username) return;
 

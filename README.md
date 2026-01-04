@@ -15,7 +15,7 @@ Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、s
 + 集成常见的后台管理功能，如用户管理、角色管理、权限管理等。
 + 可定制的主题和样式，以满足您的品牌需求。
 + 基于 MSW 和 Faker.js 的Mock方案
-+ 使用 Zustand 进行状态管理
++ 使用 MobX 进行状态管理
 + 使用 React-Query 进行数据获取
 
 ## 快速开始
@@ -63,7 +63,7 @@ pnpm build
 │  ├─ locales/                  # Internationalization (i18n) language packs
 │  ├─ pages/                    # Page components (corresponding to routes)
 │  ├─ routes/                   # Routing configuration
-│  ├─ store/                    # Global state management (Zustand)
+│  ├─ store/                    # Global state management (Mobx)
 │  ├─ theme/                    # Theme and style configuration
 │  ├─ types/                    # Global TypeScript type definitions
 │  ├─ ui/                       # Base UI components (shadcn/ui)

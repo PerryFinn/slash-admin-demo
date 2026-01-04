@@ -50,7 +50,7 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             "vendor-core": ["react", "react-dom", "react-router"],
             "vendor-ui": ["antd"],
-            "vendor-utils": ["axios", "dayjs", "i18next", "zustand", "@iconify/react"],
+            "vendor-utils": ["axios", "dayjs", "i18next", "mobx", "mobx-react-lite", "@iconify/react"],
             "vendor-charts": ["echarts"],
           },
         },
@@ -63,7 +63,7 @@ export default defineConfig(({ mode }) => {
     },
 
     optimizeDeps: {
-      include: ["react", "react-dom", "react-router", "antd", "axios", "dayjs"],
+      include: ["react", "react-dom", "react-router", "antd", "axios", "dayjs", "mobx", "mobx-react-lite"],
       exclude: ["@iconify/react"],
     },
 

@@ -17,24 +17,18 @@ alwaysApply: true
 ### UI & Styling
 
 * **[Tailwind CSS](https://tailwindcss.com)**: A utility-first CSS framework for rapidly building custom user interfaces.
-* **[Vanilla-extract](https://vanilla-extract.style)**: For writing zero-runtime, type-safe CSS styles in TypeScript
 * **[Framer Motion](https://www.framer.com/motion)**: A powerion library for creating fluid animations in React.
 * **[shadcn/ui](https://ui.shadcn.com)**: Provides a set of reusable components built on top of Radix UI and Tailwind CSS.
 * **[Iconify](https://iconify.design)**: For using various icon sets within the project.
 
 ### State Management
 
-* **[Zustand](https://zustand-demo.pmnd.rs)**: A lightweight and fast global state management library.
-* **[Tanstack Query (React Query)](https://tanstack.com/query/latest)**: For managing server state, handling data fetching, caching, and synchronization.
+* **[MobX](https://mobx.js.org/README.html)**: A Simple, scalable state management library.
+* **[Tanstack Query (React Query)](https://tanstack.com/query/v5/docs/framework/react/overview)**: For managing server state, handling data fetching, caching, and synchronization.
 
 ### Routing
 
 * **[React Router](https://reactrouter.com)**: For handling in-app navigation and routing.
-
-### Forms
-
-* **[React Hook Form](https://react-hook-form.com)**: For building high-performance, flexible, and easy-to-use forms.
-* **[Zod](https://zod.dev)**: A TypeScript-first schema declaration and validation library, often used with React Hook Form.
 
 ### Data Visualization
 
@@ -43,7 +37,6 @@ alwaysApply: true
 ### Dev Tools & Code Quality
 
 * **[Biome](https://biomejs.dev)**: A high-performance code formatter and linter to ensure consistent code style and quality.
-* **[Lefthook](https://github.com/evilmartians/lefthook)**: A Git hooks manager for automatically running scripts (e.g., lint, test) before commits.
 * **[Mock Service Worker (MSW)](https://mswjs.io)**: For intercepting requests and returning mock data in the dev environment, enabling frontend-only development and testing.
 * **[pnpm](https://pnpm.io)**: As the package manager.
 
@@ -62,7 +55,7 @@ alwaysApply: true
 │  ├─ locales/                  # Internationalization (i18n) language packs
 │  ├─ pages/                    # Page components (corresponding to routes)
 │  ├─ routes/                   # Routing configuration
-│  ├─ store/                    # Global state management (Zustand)
+│  ├─ store/                    # Global state management (Mobx)
 │  ├─ theme/                    # Theme and style configuration
 │  ├─ types/                    # Global TypeScript type definitions
 │  ├─ ui/                       # Base UI components (shadcn/ui)
