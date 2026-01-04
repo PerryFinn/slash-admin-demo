@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@ant-design/cssinjs':
-        specifier: ^1.22.0
-        version: 1.24.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -68,9 +65,6 @@ importers:
       echarts:
         specifier: ^6.0.0
         version: 6.0.0
-      highlight.js:
-        specifier: ^11.10.0
-        version: 11.11.1
       i18next:
         specifier: ^23.16.5
         version: 23.16.8
@@ -84,7 +78,7 @@ importers:
         specifier: ^0.487.0
         version: 0.487.0(react@19.2.3)
       motion:
-        specifier: ^12.9.0
+        specifier: ^12.23.26
         version: 12.23.26(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       numeral:
         specifier: ^2.0.6
@@ -2487,10 +2481,6 @@ packages:
 
   headers-polyfill@4.0.3:
     resolution: {integrity: sha512-IScLbePpkvO846sIwOtOTDjutRMWdXdJmXdMvk6gCBHxFO8d+QKOQedyZSxFTTFYRSmlgSTDtXqqq4pcenBXLQ==}
-
-  highlight.js@11.11.1:
-    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
-    engines: {node: '>=12.0.0'}
 
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -6263,8 +6253,6 @@ snapshots:
       function-bind: 1.1.2
 
   headers-polyfill@4.0.3: {}
-
-  highlight.js@11.11.1: {}
 
   hosted-git-info@2.8.9: {}
 
