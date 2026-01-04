@@ -1,10 +1,11 @@
 import { type CSSProperties, useCallback, useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 import screenfull from "screenfull";
 import { type ThemeColorPresets, ThemeLayout, ThemeMode } from "#/enum";
 import CyanBlur from "@/assets/images/background/cyan-blur.png";
 import RedBlur from "@/assets/images/background/red-blur.png";
 import { Icon } from "@/components/icon";
-import { type SettingsType, useSettingActions, useSettings } from "@/store/settingStore";
+import { type SettingsType, settingStore } from "@/store/settingStore";
 import { themeVars } from "@/theme/theme-vars";
 import { presetsColors } from "@/theme/tokens/color";
 import { FontFamilyPreset } from "@/theme/tokens/typography";
@@ -18,10 +19,10 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/ui/tooltip";
 import { Text } from "@/ui/typography";
 import { cn } from "@/utils";
 
-export default function SettingButton() {
-  const settings = useSettings();
+const SettingButton = observer(() => {
+  const settings = settingStore.snapshot;
   const { themeMode, themeColorPresets, themeLayout, themeStretch, breadCrumb, fontSize, fontFamily } = settings;
-  const { setSettings } = useSettingActions();
+  const { setSettings } = settingStore.actions;
 
   const updateSettings = (partialSettings: Partial<SettingsType>) => {
     setSettings({
@@ -363,4 +364,6 @@ export default function SettingButton() {
       </SheetContent>
     </Sheet>
   );
-}
+});
+
+export default SettingButton;

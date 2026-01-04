@@ -1,11 +1,12 @@
 import { clone, concat } from "ramda";
 import { Suspense } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
+import { observer } from "mobx-react-lite";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { LineLoading } from "@/components/loading";
 import { GLOBAL_CONFIG } from "@/global-config";
 import Page403 from "@/pages/sys/error/Page403";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { cn } from "@/utils";
 import { flattenTrees } from "@/utils/tree";
 import { backendNavData } from "./nav/nav-data/nav-data-backend";
@@ -27,8 +28,8 @@ const allItems = navData.reduce((acc: any[], group) => {
   return concat(acc, flattenedItems);
 }, []);
 
-const Main = () => {
-  const { themeStretch } = useSettings();
+const Main = observer(() => {
+  const { themeStretch } = settingStore.snapshot;
 
   const { pathname } = useLocation();
   const currentNavAuth = findAuthByPath(pathname);
@@ -57,6 +58,6 @@ const Main = () => {
       </main>
     </AuthGuard>
   );
-};
+});
 
 export default Main;

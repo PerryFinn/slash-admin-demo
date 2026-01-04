@@ -1,12 +1,13 @@
+import { observer } from "mobx-react-lite";
 import { Chart, useChart } from "@/components/chart";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { getResolvedThemeTokens } from "@/theme/theme-vars";
 import { fNumber } from "@/utils/format-number";
 import { rgbAlpha } from "@/utils/theme";
 
 const series = [44, 55];
-export default function ChartRadial() {
-  const { themeMode, themeColorPresets } = useSettings();
+const ChartRadial = observer(() => {
+  const { themeMode, themeColorPresets } = settingStore.snapshot;
   const tokens = getResolvedThemeTokens({ themeMode, themeColorPresets });
   const labels = ["Apples", "Oranges"];
   const trackColor = rgbAlpha(tokens.colors.palette.gray[500], 0.2);
@@ -57,4 +58,6 @@ export default function ChartRadial() {
   });
 
   return <Chart option={option} height={320} />;
-}
+});
+
+export default ChartRadial;

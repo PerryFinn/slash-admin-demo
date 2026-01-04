@@ -1,5 +1,4 @@
 import { action, autorun, makeObservable, observable, toJS } from "mobx";
-import { useObserver } from "mobx-react-lite";
 import { StorageEnum, ThemeColorPresets, ThemeLayout, ThemeMode } from "#/enum";
 import { FontFamilyPreset, typographyTokens } from "@/theme/tokens/typography";
 
@@ -97,10 +96,4 @@ class SettingStore {
   }
 }
 
-const settingStore = new SettingStore();
-
-export const useSettings = () => useObserver(() => settingStore.snapshot);
-export const useSettingActions = () => settingStore.actions;
-export const getSettingSnapshot = () => settingStore.snapshot;
-export const settingStoreInstance = settingStore;
-export default settingStore;
+export const settingStore = new SettingStore();

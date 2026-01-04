@@ -1,17 +1,18 @@
+import { observer } from "mobx-react-lite";
 import type { ThemeConfig } from "antd";
 import { App, ConfigProvider, theme } from "antd";
 import { ThemeMode } from "#/enum";
 import useLocale from "@/locales/use-locale";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { removePx } from "@/utils/theme";
 import { baseThemeTokens } from "../tokens/base";
 import { darkColorTokens, lightColorTokens, presetsColors } from "../tokens/color";
 import type { UILibraryAdapter } from "../type";
 import styles from "./antd.adapter.module.css";
 
-export const AntdAdapter: UILibraryAdapter = ({ mode, children }) => {
+export const AntdAdapter: UILibraryAdapter = observer(({ mode, children }) => {
   const { language } = useLocale();
-  const { themeColorPresets, fontFamily, fontSize } = useSettings();
+  const { themeColorPresets, fontFamily, fontSize } = settingStore.snapshot;
   const algorithm = mode === ThemeMode.Light ? theme.defaultAlgorithm : theme.darkAlgorithm;
 
   const colorTokens = mode === ThemeMode.Light ? lightColorTokens : darkColorTokens;
@@ -63,4 +64,4 @@ export const AntdAdapter: UILibraryAdapter = ({ mode, children }) => {
       <App>{children}</App>
     </ConfigProvider>
   );
-};
+});

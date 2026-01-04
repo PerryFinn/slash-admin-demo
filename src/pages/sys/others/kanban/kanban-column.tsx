@@ -3,9 +3,10 @@ import { CSS } from "@dnd-kit/utilities";
 import { faker } from "@faker-js/faker";
 import { type CSSProperties, useRef, useState } from "react";
 import { useEvent } from "react-use";
+import { observer } from "mobx-react-lite";
 import { ThemeMode } from "#/enum";
 import { Icon } from "@/components/icon";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { Button } from "@/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/ui/dropdown-menu";
 import { Input } from "@/ui/input";
@@ -24,7 +25,7 @@ type Props = {
   isDragging?: boolean;
 };
 
-export default function KanbanColumn({
+const KanbanColumn = observer(function KanbanColumn({
   id,
   column,
   tasks,
@@ -34,7 +35,7 @@ export default function KanbanColumn({
   renameColumn,
   isDragging,
 }: Props) {
-  const { themeMode } = useSettings();
+  const { themeMode } = settingStore.snapshot;
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
   const style: CSSProperties = {
@@ -194,4 +195,6 @@ export default function KanbanColumn({
       </footer>
     </div>
   );
-}
+});
+
+export default KanbanColumn;

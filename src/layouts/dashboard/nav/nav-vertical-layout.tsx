@@ -1,9 +1,10 @@
 import { Icon } from "@/components/icon";
 import Logo from "@/components/logo";
+import { observer } from "mobx-react-lite";
 import { NavMini, NavVertical } from "@/components/nav";
 import type { NavProps } from "@/components/nav/types";
 import { GLOBAL_CONFIG } from "@/global-config";
-import { useSettingActions, useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { ThemeLayout } from "@/types/enum";
 import { Button } from "@/ui/button";
 import { ScrollArea } from "@/ui/scroll-area";
@@ -14,10 +15,10 @@ type Props = {
   className?: string;
 };
 
-export function NavVerticalLayout({ data, className }: Props) {
-  const settings = useSettings();
+export const NavVerticalLayout = observer(function NavVerticalLayout({ data, className }: Props) {
+  const settings = settingStore.snapshot;
   const { themeLayout } = settings;
-  const { setSettings } = useSettingActions();
+  const { setSettings } = settingStore.actions;
 
   const navWidth = themeLayout === ThemeLayout.Vertical ? "var(--layout-nav-width)" : "var(--layout-nav-width-mini)";
   const handleToggle = () => {
@@ -76,4 +77,4 @@ export function NavVerticalLayout({ data, className }: Props) {
       </ScrollArea>
     </nav>
   );
-}
+});

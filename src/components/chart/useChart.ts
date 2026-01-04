@@ -1,12 +1,12 @@
 import type { EChartsOption } from "echarts";
 import { mergeDeepRight } from "ramda";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { getResolvedThemeTokens } from "@/theme/theme-vars";
 import type { ThemeColorPresets, ThemeMode } from "@/types/enum";
 import { rgbAlpha } from "@/utils/theme";
 
 export function useChart(options: EChartsOption) {
-  const { themeColorPresets, themeMode } = useSettings();
+  const { themeColorPresets, themeMode } = settingStore.snapshot;
 
   const baseOptions = baseChartOptions(themeMode, themeColorPresets) ?? {};
   return mergeDeepRight(baseOptions, options) as EChartsOption;

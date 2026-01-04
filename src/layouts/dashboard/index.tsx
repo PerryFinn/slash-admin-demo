@@ -1,7 +1,8 @@
+import { observer } from "mobx-react-lite";
 import { ThemeLayout } from "#/enum";
 import Logo from "@/components/logo";
 import { down, useMediaQuery } from "@/hooks";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import Header from "./header";
 import Main from "./main";
 import { NavHorizontalLayout, NavMobileLayout, NavVerticalLayout, useFilteredNavData } from "./nav";
@@ -27,12 +28,12 @@ function MobileLayout() {
   );
 }
 
-function PcLayout() {
-  const { themeLayout } = useSettings();
+const PcLayout = observer(() => {
+  const { themeLayout } = settingStore.snapshot;
 
   if (themeLayout === ThemeLayout.Horizontal) return <PcHorizontalLayout />;
   return <PcVerticalLayout />;
-}
+});
 
 function PcHorizontalLayout() {
   const navData = useFilteredNavData();
@@ -48,8 +49,8 @@ function PcHorizontalLayout() {
   );
 }
 
-function PcVerticalLayout() {
-  const settings = useSettings();
+const PcVerticalLayout = observer(() => {
+  const settings = settingStore.snapshot;
   const { themeLayout } = settings;
   const navData = useFilteredNavData();
 
@@ -72,4 +73,4 @@ function PcVerticalLayout() {
       </div>
     </>
   );
-}
+});

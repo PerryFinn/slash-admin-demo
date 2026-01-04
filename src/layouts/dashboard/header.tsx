@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
+import { observer } from "mobx-react-lite";
 import { Icon } from "@/components/icon";
 import LocalePicker from "@/components/locale-picker";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { Button } from "@/ui/button";
 import { cn } from "@/utils";
 import AccountDropdown from "../components/account-dropdown";
@@ -14,8 +15,8 @@ interface HeaderProps {
   leftSlot?: ReactNode;
 }
 
-export default function Header({ leftSlot }: HeaderProps) {
-  const { breadCrumb } = useSettings();
+const Header = observer(function Header({ leftSlot }: HeaderProps) {
+  const { breadCrumb } = settingStore.snapshot;
   return (
     <header
       data-slot="slash-layout-header"
@@ -57,4 +58,6 @@ export default function Header({ leftSlot }: HeaderProps) {
       </div>
     </header>
   );
-}
+});
+
+export default Header;

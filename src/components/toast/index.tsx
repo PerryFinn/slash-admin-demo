@@ -1,13 +1,14 @@
+import { observer } from "mobx-react-lite";
 import { Toaster } from "sonner";
 import { Icon } from "@/components/icon";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { themeVars } from "@/theme/theme-vars";
 
 /**
  * https://sonner.emilkowal.ski/getting-started
  */
-export default function Toast() {
-  const { themeMode } = useSettings();
+const Toast = observer(function Toast() {
+  const { themeMode } = settingStore.snapshot;
 
   return (
     <Toaster
@@ -59,4 +60,6 @@ export default function Toast() {
       expand
     />
   );
-}
+});
+
+export default Toast;

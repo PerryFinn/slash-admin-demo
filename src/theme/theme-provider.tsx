@@ -1,6 +1,7 @@
 import { useLayoutEffect } from "react";
+import { observer } from "mobx-react-lite";
 import { HtmlDataAttribute } from "#/enum";
-import { useSettings } from "@/store/settingStore";
+import { settingStore } from "@/store/settingStore";
 import { applyThemeCssVars } from "./theme-vars";
 import type { UILibraryAdapter } from "./type";
 
@@ -9,8 +10,8 @@ interface ThemeProviderProps {
   adapters?: UILibraryAdapter[];
 }
 
-export function ThemeProvider({ children, adapters = [] }: ThemeProviderProps) {
-  const { themeMode, themeColorPresets, fontFamily, fontSize } = useSettings();
+export const ThemeProvider = observer(function ThemeProvider({ children, adapters = [] }: ThemeProviderProps) {
+  const { themeMode, themeColorPresets, fontFamily, fontSize } = settingStore.snapshot;
 
   // 同步更新主题属性与 CSS 变量，避免闪烁
   useLayoutEffect(() => {
@@ -40,4 +41,4 @@ export function ThemeProvider({ children, adapters = [] }: ThemeProviderProps) {
   );
 
   return wrappedWithAdapters;
-}
+});

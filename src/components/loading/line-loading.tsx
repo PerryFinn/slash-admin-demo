@@ -1,9 +1,10 @@
 import "./line-loading.css";
-import { useSettings } from "@/store/settingStore";
+import { observer } from "mobx-react-lite";
+import { settingStore } from "@/store/settingStore";
 import { commonColors, paletteColors } from "@/theme/tokens/color";
 
-export function LineLoading() {
-  const { themeMode } = useSettings();
+export const LineLoading = observer(function LineLoading() {
+  const { themeMode } = settingStore.snapshot;
 
   return (
     <div className="flex h-full min-h-screen w-full flex-col items-center justify-center">
@@ -22,4 +23,4 @@ export function LineLoading() {
       </div>
     </div>
   );
-}
+});
