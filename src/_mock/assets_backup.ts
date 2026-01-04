@@ -334,17 +334,6 @@ export const DB_MENU: Menu[] = [
     hidden: true,
   },
   {
-    id: "calendar",
-    parentId: "group_others",
-    name: "sys.nav.calendar",
-    code: "calendar",
-    icon: "solar:calendar-bold-duotone",
-    type: MENU,
-    path: "/calendar",
-    info: "12",
-    component: "/pages/sys/others/calendar",
-  },
-  {
     id: "kanban",
     parentId: "group_others",
     name: "sys.nav.kanban",

@@ -100,7 +100,6 @@ export function getFrontendDashboardRoutes(): RouteObject[] {
         { path: "page-test", element: Component("/pages/sys/others/permission/page-test") },
       ],
     },
-    { path: "calendar", element: Component("/pages/sys/others/calendar") },
     { path: "kanban", element: Component("/pages/sys/others/kanban") },
     { path: "blank", element: Component("/pages/sys/others/blank") },
   ];

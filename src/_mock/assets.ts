@@ -420,16 +420,6 @@ const ERRORS_PERMISSION = {
 };
 const OTHERS_PERMISSION = [
   {
-    id: "3981225257359246",
-    parentId: "",
-    label: "sys.nav.calendar",
-    name: "Calendar",
-    icon: "solar:calendar-bold-duotone",
-    type: PermissionType.MENU,
-    route: "calendar",
-    component: "/sys/others/calendar/index.tsx",
-  },
-  {
     id: "3513985683886393",
     parentId: "",
     label: "sys.nav.kanban",
@@ -448,7 +438,7 @@ const OTHERS_PERMISSION = [
     type: PermissionType.MENU,
     route: "disabled",
     status: BasicStatus.DISABLE,
-    component: "/sys/others/calendar/index.tsx",
+    component: "/sys/others/blank.tsx",
   },
   {
     id: "7728048658221587",
