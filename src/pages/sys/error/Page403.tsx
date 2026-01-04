@@ -65,5 +65,5 @@ export default function Page403() {
       </defs>
     </svg>
   );
-  return <ErrorLayout title="Access Denied" desc="You do not have permission to access this resource." svg={svg} />;
+  return <ErrorLayout title="Access Denied" desc="您没有权限访问此资源" svg={svg} />;
 }

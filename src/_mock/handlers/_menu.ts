@@ -1,6 +1,6 @@
 import { HttpResponse, http } from "msw";
 import zhCN from "@/locales/lang/zh_CN";
-import { ResultStatus } from "@/types/enum";
+import { StatusCode } from "@/types/enum";
 import { convertFlatToTree } from "@/utils/tree";
 import { DB_MENU } from "../assets_backup";
 
@@ -30,7 +30,7 @@ const menuList = http.get("/api/menu", async () => {
     {
       message: "",
       data: menuTree,
-      status: ResultStatus.SUCCESS, // business status
+      status: StatusCode.SUCCESS, // business status
     },
     {
       status: 200, // http status

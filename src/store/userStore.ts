@@ -102,7 +102,7 @@ export const useSignIn = () => {
   const signIn = async (data: SignInReq) => {
     try {
       const res = await signInMutation.mutateAsync(data);
-      const { user, accessToken, refreshToken } = res;
+      const { user, accessToken, refreshToken } = res.data;
       userStore.setUserToken({ accessToken, refreshToken });
       userStore.setUserInfo(user);
     } catch (err) {

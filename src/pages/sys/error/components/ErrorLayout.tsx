@@ -23,7 +23,7 @@ export default function ErrorLayout({
   desc,
   svg,
   homePath = GLOBAL_CONFIG.defaultRoute,
-  buttonText = "Go to Home",
+  buttonText = "返回首页",
   slots = {},
 }: ErrorLayoutProps) {
   return (

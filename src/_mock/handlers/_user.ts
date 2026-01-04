@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { HttpResponse, http } from "msw";
 import { UserApi } from "@/api/services/userService";
 import zhCN from "@/locales/lang/zh_CN";
-import { ResultStatus } from "@/types/enum";
+import { StatusCode } from "@/types/enum";
 import { convertFlatToTree } from "@/utils/tree";
 import { DB_MENU, DB_PERMISSION, DB_ROLE, DB_ROLE_PERMISSION, DB_USER, DB_USER_ROLE } from "../assets_backup";
 
@@ -62,7 +62,7 @@ const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
   const menu = convertFlatToTree(DB_MENU).map(mapMenu);
 
   return HttpResponse.json({
-    status: ResultStatus.SUCCESS,
+    status: StatusCode.SUCCESS,
     message: "",
     data: {
       user: {

@@ -3,8 +3,8 @@ export enum BasicStatus {
   ENABLE = 1,
 }
 
-export enum ResultStatus {
-  SUCCESS = 0,
+export enum StatusCode {
+  SUCCESS = 200,
   ERROR = -1,
   TIMEOUT = 401,
 }

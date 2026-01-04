@@ -11,7 +11,6 @@ Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、s
 + 响应式设计，适应各种屏幕尺寸和设备。
 + 灵活的路由配置，支持多级嵌套路由。
 + 集成权限管理，根据用户角色控制页面访问权限。
-+ 集成国际化支持，轻松切换多语言。
 + 集成常见的后台管理功能，如用户管理、角色管理、权限管理等。
 + 可定制的主题和样式，以满足您的品牌需求。
 + 基于 MSW 和 Faker.js 的Mock方案
@@ -25,6 +24,7 @@ Slash Admin 是一款现代化的后台管理模板，基于 React 19、Vite、s
 在项目根目录下运行以下命令安装项目依赖：
 
 ```bash
+# pnpm@9.12.3
 pnpm install
 ```
 
@@ -77,5 +77,5 @@ pnpm build
 ├─ vite.config.ts                # Vite configuration file
 ├─ tailwind.config.ts            # Tailwind CSS configuration file
 ├─ tsconfig.ts                   # TypeScript configuration file
-└─ biome.json                   # Biome formatter/linter configuration
+└─ biome.jsonc                   # Biome formatter/linter configuration
 ```

@@ -26,9 +26,9 @@ export const useAuthCheck = (baseOn: "role" | "permission" = "permission") => {
 
   const getAccessToken = () => userStore.userTokenSnapshot.accessToken;
 
-  // check if item exists
+  // 检查是否存在某项权限
   const check = (item: string): boolean => {
-    // if user is not logged in, return false
+    // 如果用户未登录，返回 false
     const accessToken = getAccessToken();
     if (!accessToken) {
       return false;
@@ -37,7 +37,7 @@ export const useAuthCheck = (baseOn: "role" | "permission" = "permission") => {
     return resourcePool.some((p) => p.code === item);
   };
 
-  // check if any item exists
+  // 检查是否存在任何一项权限
   const checkAny = (items: string[]) => {
     if (items.length === 0) {
       return true;
@@ -45,7 +45,7 @@ export const useAuthCheck = (baseOn: "role" | "permission" = "permission") => {
     return items.some((item) => check(item));
   };
 
-  // check if all items exist
+  // 检查所有权限是否存在
   const checkAll = (items: string[]) => {
     if (items.length === 0) {
       return true;

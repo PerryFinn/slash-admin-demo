@@ -22,8 +22,8 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (res: AxiosResponse<ReqResult<any>>) => {
     if (!res.data) throw new Error("请求出错，请稍候重试");
-    const { statusCode: status, data, message } = res.data;
-    if (status === StatusCode.SUCCESS) {
+    const { statusCode, data, message } = res.data;
+    if (statusCode === StatusCode.SUCCESS) {
       return data;
     }
     throw new Error(message || "请求出错，请稍候重试");

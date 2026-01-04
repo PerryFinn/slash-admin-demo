@@ -56,11 +56,5 @@ export default function Page404() {
       </defs>
     </svg>
   );
-  return (
-    <ErrorLayout
-      title="Oops! Page not found!"
-      desc="The page you’re looking for doesn’t exist or has been moved."
-      svg={svg}
-    />
-  );
+  return <ErrorLayout title="Oops! Page not found!" desc="您访问的页面不存在或已移动" svg={svg} />;
 }

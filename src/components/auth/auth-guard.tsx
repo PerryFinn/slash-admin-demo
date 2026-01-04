@@ -3,27 +3,27 @@ import { useAuthCheck } from "./use-auth";
 
 interface AuthGuardProps {
   /**
-   * The content to be rendered if the user has the required permissions/roles
+   * 如果用户具有所需的权限/角色，则渲染内容
    */
   children: ReactNode;
   /**
-   * The fallback content to be rendered if the user doesn't have the required permissions/roles
+   * 如果用户没有所需的权限/角色，则渲染备选内容
    */
   fallback?: ReactNode;
   /**
-   * The permission/role to check
+   * 要检查的权限/角色
    */
   check?: string;
   /**
-   * The permissions/roles to check (any one of them)
+   * 要检查的权限/角色 (任意一个)
    */
   checkAny?: string[];
   /**
-   * The permissions/roles to check (all of them)
+   * 要检查的权限/角色 (全部)
    */
   checkAll?: string[];
   /**
-   * The type of check to perform: 'role' or 'permission'
+   * 要执行的检查类型: 'role' 或 'permission'
    * @default 'permission'
    */
   baseOn?: "role" | "permission";
