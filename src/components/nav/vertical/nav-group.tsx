@@ -1,6 +1,5 @@
 import { useToggle } from "react-use";
 import { Icon } from "@/components/icon";
-import useLocale from "@/locales/use-locale";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/ui/collapsible";
 import { cn } from "@/utils";
 import type { NavGroupProps } from "../types";
@@ -26,7 +25,6 @@ export function NavGroup({ name, items }: NavGroupProps) {
 }
 
 function Group({ name, open, onClick }: { name?: string; open: boolean; onClick: (nextValue: boolean) => void }) {
-  const { t } = useLocale();
   return (
     name && (
       <div
@@ -53,7 +51,7 @@ function Group({ name, open, onClick }: { name?: string; open: boolean; onClick:
             "hover:text-text-primary",
           )}
         >
-          {t(name)}
+          {name}
         </span>
       </div>
     )

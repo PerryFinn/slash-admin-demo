@@ -4,57 +4,57 @@ import { Badge } from "@/ui/badge";
 
 export const frontendNavData: NavProps["data"] = [
   {
-    name: "sys.nav.dashboard",
+    name: "仪表板",
     items: [
       {
-        title: "sys.nav.workbench",
+        title: "工作台",
         path: "/workbench",
         icon: <Icon icon="local:ic-workbench" size="24" />,
       },
       {
-        title: "sys.nav.analysis",
+        title: "分析",
         path: "/analysis",
         icon: <Icon icon="local:ic-analysis" size="24" />,
       },
     ],
   },
   {
-    name: "sys.nav.pages",
+    name: "页面",
     items: [
       // management
       {
-        title: "sys.nav.management",
+        title: "管理",
         path: "/management",
         icon: <Icon icon="local:ic-management" size="24" />,
         children: [
           {
-            title: "sys.nav.user.index",
+            title: "用户",
             path: "/management/user",
             children: [
               {
-                title: "sys.nav.user.profile",
+                title: "个人资料",
                 path: "/management/user/profile",
               },
               {
-                title: "sys.nav.user.account",
+                title: "账户",
                 path: "/management/user/account",
               },
             ],
           },
           {
-            title: "sys.nav.system.index",
+            title: "系统",
             path: "/management/system",
             children: [
               {
-                title: "sys.nav.system.permission",
+                title: "权限",
                 path: "/management/system/permission",
               },
               {
-                title: "sys.nav.system.role",
+                title: "角色",
                 path: "/management/system/role",
               },
               {
-                title: "sys.nav.system.user",
+                title: "用户",
                 path: "/management/system/user",
               },
             ],
@@ -63,32 +63,32 @@ export const frontendNavData: NavProps["data"] = [
       },
       // menulevel
       {
-        title: "sys.nav.menulevel.index",
+        title: "多级菜单",
         path: "/menu_level",
         icon: <Icon icon="local:ic-menulevel" size="24" />,
         children: [
           {
-            title: "sys.nav.menulevel.1a",
+            title: "多级菜单 1a",
             path: "/menu_level/1a",
           },
           {
-            title: "sys.nav.menulevel.1b.index",
+            title: "多级菜单 1b",
             path: "/menu_level/1b",
             children: [
               {
-                title: "sys.nav.menulevel.1b.2a",
+                title: "多级菜单 2a",
                 path: "/menu_level/1b/2a",
               },
               {
-                title: "sys.nav.menulevel.1b.2b.index",
+                title: "多级菜单 2b",
                 path: "/menu_level/1b/2b",
                 children: [
                   {
-                    title: "sys.nav.menulevel.1b.2b.3a",
+                    title: "多级菜单 3a",
                     path: "/menu_level/1b/2b/3a",
                   },
                   {
-                    title: "sys.nav.menulevel.1b.2b.3b",
+                    title: "多级菜单 3b",
                     path: "/menu_level/1b/2b/3b",
                   },
                 ],
@@ -99,20 +99,20 @@ export const frontendNavData: NavProps["data"] = [
       },
       // errors
       {
-        title: "sys.nav.error.index",
+        title: "异常页",
         path: "/error",
         icon: <Icon icon="bxs:error-alt" size="24" />,
         children: [
           {
-            title: "sys.nav.error.403",
+            title: "403",
             path: "/error/403",
           },
           {
-            title: "sys.nav.error.404",
+            title: "404",
             path: "/error/404",
           },
           {
-            title: "sys.nav.error.500",
+            title: "500",
             path: "/error/500",
           },
         ],
@@ -120,57 +120,57 @@ export const frontendNavData: NavProps["data"] = [
     ],
   },
   {
-    name: "sys.nav.ui",
+    name: "UI",
     items: [
       // components
       {
-        title: "sys.nav.components",
+        title: "组件",
         path: "/components",
         icon: <Icon icon="solar:widget-5-bold-duotone" size="24" />,
-        caption: "sys.nav.custom_ui_components",
+        caption: "自定义UI组件",
         children: [
           {
-            title: "sys.nav.icon",
+            title: "图标",
             path: "/components/icon",
           },
           {
-            title: "sys.nav.animate",
+            title: "动画",
             path: "/components/animate",
           },
           {
-            title: "sys.nav.scroll",
+            title: "滚动",
             path: "/components/scroll",
           },
           {
-            title: "sys.nav.i18n",
+            title: "多语言",
             path: "/components/multi-language",
           },
           {
-            title: "sys.nav.upload",
+            title: "上传",
             path: "/components/upload",
           },
           {
-            title: "sys.nav.chart",
+            title: "图表",
             path: "/components/chart",
           },
           {
-            title: "sys.nav.toast",
+            title: "Toast",
             path: "/components/toast",
           },
         ],
       },
       // functions
       {
-        title: "sys.nav.functions",
+        title: "功能",
         path: "/functions",
         icon: <Icon icon="solar:plain-2-bold-duotone" size="24" />,
         children: [
           {
-            title: "sys.nav.clipboard",
+            title: "剪贴板",
             path: "/functions/clipboard",
           },
           {
-            title: "sys.nav.token_expired",
+            title: "Token失效",
             path: "/functions/token_expired",
           },
         ],
@@ -178,59 +178,58 @@ export const frontendNavData: NavProps["data"] = [
     ],
   },
   {
-    name: "sys.nav.others",
+    name: "其他",
     items: [
       {
-        title: "sys.nav.permission",
+        title: "权限",
         path: "/permission",
         icon: <Icon icon="mingcute:safe-lock-fill" size="24" />,
       },
       {
-        title: "sys.nav.permission.page_test",
+        title: "页面鉴权测试",
         path: "/permission/page-test",
         icon: <Icon icon="mingcute:safe-lock-fill" size="24" />,
         auth: ["permission:read"],
         hidden: true,
       },
       {
-        title: "sys.nav.kanban",
+        title: "看板",
         path: "/kanban",
         icon: <Icon icon="solar:clipboard-bold-duotone" size="24" />,
       },
       {
-        title: "sys.nav.disabled",
+        title: "项目禁用",
         path: "/disabled",
         icon: <Icon icon="local:ic-disabled" size="24" />,
         disabled: true,
       },
       {
-        title: "sys.nav.label",
+        title: "项目标签",
         path: "#label",
         icon: <Icon icon="local:ic-label" size="24" />,
         info: (
           <Badge variant="info">
-            <Icon icon="solar:bell-bing-bold-duotone" size={14} />
-            New
+            <Icon icon="solar:bell-bing-bold-duotone" size={14} />新
           </Badge>
         ),
       },
       {
-        title: "sys.nav.link",
+        title: "链接",
         path: "/link",
         icon: <Icon icon="local:ic-external" size="24" />,
         children: [
           {
-            title: "sys.nav.external_link",
+            title: "外链",
             path: "/link/external-link",
           },
           {
-            title: "sys.nav.iframe",
+            title: "内嵌",
             path: "/link/iframe",
           },
         ],
       },
       {
-        title: "sys.nav.blank",
+        title: "空白",
         path: "/blank",
         icon: <Icon icon="local:ic-blank" size="24" />,
       },

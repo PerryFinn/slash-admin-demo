@@ -4,7 +4,6 @@ import { useCallback, useMemo } from "react";
 import { Link, useMatches } from "react-router";
 import type { NavItemDataProps } from "@/components/nav";
 import { useFilteredNavData } from "@/layouts/dashboard/nav";
-import useLocale from "@/locales/use-locale";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -34,7 +33,6 @@ interface BreadcrumbItemData {
 }
 
 export default function BreadCrumb({ maxItems = 3 }: BreadCrumbProps) {
-  const { t } = useLocale();
   const matches = useMatches();
   const navData = useFilteredNavData();
 
@@ -67,17 +65,17 @@ export default function BreadCrumb({ maxItems = 3 }: BreadCrumbProps) {
         const children =
           currentItem.children?.map((child) => ({
             key: child.path,
-            label: t(child.title),
+            label: child.title,
           })) ?? [];
 
         return {
           key: currentItem.path,
-          label: t(currentItem.title),
+          label: currentItem.title,
           items: children,
         };
       })
       .filter((item): item is BreadcrumbItemData => item !== null);
-  }, [matches, t, findPathInNavData, navData]);
+  }, [matches, findPathInNavData, navData]);
 
   const renderBreadcrumbItem = (item: BreadcrumbItemData, isLast: boolean) => {
     const hasItems = item.items && item.items.length > 0;

@@ -1,24 +1,32 @@
 import { Dropdown, type MenuProps } from "antd";
-import { useTranslation } from "react-i18next";
 import { MultiTabOperation } from "#/enum";
 import { Icon } from "@/components/icon";
 import { useTabLabelRender } from "../hooks/use-tab-label-render";
 import { useMultiTabsContext } from "../providers/multi-tabs-provider";
 import type { TabItemProps } from "../types";
 
+const TAB_LABELS: Record<MultiTabOperation, string> = {
+  [MultiTabOperation.FULLSCREEN]: "全屏",
+  [MultiTabOperation.REFRESH]: "刷新",
+  [MultiTabOperation.CLOSE]: "关闭标签页",
+  [MultiTabOperation.CLOSEOTHERS]: "关闭其它标签页",
+  [MultiTabOperation.CLOSEALL]: "关闭所有标签页",
+  [MultiTabOperation.CLOSELEFT]: "关闭左侧标签页",
+  [MultiTabOperation.CLOSERIGHT]: "关闭右侧标签页",
+};
+
 export function TabItem({ tab, style, onClose }: TabItemProps) {
-  const { t } = useTranslation();
   const { tabs, refreshTab, closeTab, closeOthersTab, closeLeft, closeRight, closeAll } = useMultiTabsContext();
 
   const renderTabLabel = useTabLabelRender();
   const menuItems: MenuProps["items"] = [
     {
-      label: t(`sys.tab.${MultiTabOperation.REFRESH}`),
+      label: TAB_LABELS[MultiTabOperation.REFRESH],
       key: MultiTabOperation.REFRESH,
       icon: <Icon icon="mdi:reload" size={18} />,
     },
     {
-      label: t(`sys.tab.${MultiTabOperation.CLOSE}`),
+      label: TAB_LABELS[MultiTabOperation.CLOSE],
       key: MultiTabOperation.CLOSE,
       icon: <Icon icon="material-symbols:close" size={18} />,
       disabled: tabs.length === 1,
@@ -27,13 +35,13 @@ export function TabItem({ tab, style, onClose }: TabItemProps) {
       type: "divider",
     },
     {
-      label: t(`sys.tab.${MultiTabOperation.CLOSELEFT}`),
+      label: TAB_LABELS[MultiTabOperation.CLOSELEFT],
       key: MultiTabOperation.CLOSELEFT,
       icon: <Icon icon="material-symbols:tab-close-right-outline" size={18} className="rotate-180" />,
       disabled: tabs.findIndex((t) => t.key === tab.key) === 0,
     },
     {
-      label: t(`sys.tab.${MultiTabOperation.CLOSERIGHT}`),
+      label: TAB_LABELS[MultiTabOperation.CLOSERIGHT],
       key: MultiTabOperation.CLOSERIGHT,
       icon: <Icon icon="material-symbols:tab-close-right-outline" size={18} />,
       disabled: tabs.findIndex((t) => t.key === tab.key) === tabs.length - 1,
@@ -42,13 +50,13 @@ export function TabItem({ tab, style, onClose }: TabItemProps) {
       type: "divider",
     },
     {
-      label: t(`sys.tab.${MultiTabOperation.CLOSEOTHERS}`),
+      label: TAB_LABELS[MultiTabOperation.CLOSEOTHERS],
       key: MultiTabOperation.CLOSEOTHERS,
       icon: <Icon icon="material-symbols:tab-close-outline" size={18} />,
       disabled: tabs.length === 1,
     },
     {
-      label: t(`sys.tab.${MultiTabOperation.CLOSEALL}`),
+      label: TAB_LABELS[MultiTabOperation.CLOSEALL],
       key: MultiTabOperation.CLOSEALL,
       icon: <Icon icon="mdi:collapse-all-outline" size={18} />,
     },

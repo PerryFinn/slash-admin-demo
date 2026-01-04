@@ -1,9 +1,39 @@
 import { faker } from "@faker-js/faker";
 import { HttpResponse, http } from "msw";
 import { UserApi } from "@/api/services/userService";
+import zhCN from "@/locales/lang/zh_CN";
 import { ResultStatus } from "@/types/enum";
 import { convertFlatToTree } from "@/utils/tree";
 import { DB_MENU, DB_PERMISSION, DB_ROLE, DB_ROLE_PERMISSION, DB_USER, DB_USER_ROLE } from "../assets_backup";
+
+const getZh = (key?: string) => {
+  if (!key) return key;
+  const parts = key.split(".");
+  let current: any = zhCN;
+  for (const part of parts) {
+    current = current?.[part];
+  }
+  return typeof current === "string" ? current : key;
+};
+
+const mapMenu = (item: any): any => {
+  const children = item.children?.map(mapMenu);
+  return {
+    ...item,
+    name: getZh(item.name),
+    caption: item.caption ? getZh(item.caption) : item.caption,
+    ...(children ? { children } : {}),
+  };
+};
+
+const mapPermission = (item: any): any => {
+  const children = item.children?.map(mapPermission);
+  return {
+    ...item,
+    label: item.label ? getZh(item.label) : item.label,
+    ...(children ? { children } : {}),
+  };
+};
 
 const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
   const { username, password } = (await request.json()) as Record<string, string>;
@@ -29,13 +59,18 @@ const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
     DB_PERMISSION.find((permission) => permission.id === item.permissionId),
   );
 
-  const menu = convertFlatToTree(DB_MENU);
+  const menu = convertFlatToTree(DB_MENU).map(mapMenu);
 
   return HttpResponse.json({
     status: ResultStatus.SUCCESS,
     message: "",
     data: {
-      user: { ...userWithoutPassword, roles, permissions, menu },
+      user: {
+        ...userWithoutPassword,
+        roles,
+        permissions: permissions.map((item) => (item ? mapPermission(item) : item)),
+        menu,
+      },
       accessToken: faker.string.uuid(),
       refreshToken: faker.string.uuid(),
     },

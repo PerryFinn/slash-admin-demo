@@ -1,14 +1,24 @@
 import Table, { type ColumnsType } from "antd/es/table";
 import { isNil } from "ramda";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import type { Permission_Old } from "#/entity";
 import { BasicStatus, PermissionType } from "#/enum";
 import { Icon } from "@/components/icon";
+import zhCN from "@/locales/lang/zh_CN";
 import { Badge } from "@/ui/badge";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardHeader } from "@/ui/card";
 import PermissionModal, { type PermissionModalProps } from "./permission-modal";
+
+const getZh = (key?: string) => {
+  if (!key) return key;
+  const parts = key.split(".");
+  let current: any = zhCN;
+  for (const part of parts) {
+    current = current?.[part];
+  }
+  return typeof current === "string" ? current : key;
+};
 
 const defaultPermissionValue: Permission_Old = {
   id: "",
@@ -24,7 +34,6 @@ const defaultPermissionValue: Permission_Old = {
 };
 export default function PermissionPage() {
   // const permissions = useUserPermission();
-  const { t } = useTranslation();
 
   const [permissionModalProps, setPermissionModalProps] = useState<PermissionModalProps>({
     formValue: { ...defaultPermissionValue },
@@ -42,7 +51,7 @@ export default function PermissionPage() {
       title: "Name",
       dataIndex: "name",
       width: 300,
-      render: (_, record) => <div>{t(record.label)}</div>,
+      render: (_, record) => <div>{getZh(record.label)}</div>,
     },
     {
       title: "Type",

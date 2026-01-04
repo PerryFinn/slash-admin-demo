@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useBoolean } from "react-use";
 import { Icon } from "@/components/icon";
-import useLocale from "@/locales/use-locale";
 import { useRouter } from "@/routes/hooks";
 import { Badge } from "@/ui/badge";
 import { Button } from "@/ui/button";
@@ -39,7 +38,6 @@ const HighlightText = ({ text, query }: { text: string; query: string }) => {
 };
 
 const SearchBar = () => {
-  const { t } = useLocale();
   const { replace } = useRouter();
   const [open, setOpen] = useBoolean(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,11 +67,6 @@ const SearchBar = () => {
     flattenItems(navData);
     return items;
   }, [navData]);
-
-  // const searchResult = useMemo(() => {
-  // 	const query = searchQuery.toLowerCase();
-  // 	return flattenedItems.filter((item) => t(item.label).toLowerCase().includes(query) || item.key.toLowerCase().includes(query));
-  // }, [searchQuery, t, flattenedItems]);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -108,14 +101,14 @@ const SearchBar = () => {
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." value={searchQuery} onValueChange={setSearchQuery} />
+        <CommandInput placeholder="输入命令或搜索..." value={searchQuery} onValueChange={setSearchQuery} />
         <ScrollArea className="h-[400px]">
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Navigations">
+          <CommandEmpty>未找到结果</CommandEmpty>
+          <CommandGroup heading="导航">
             {flattenedItems.map(({ key, label }) => (
               <CommandItem key={key} onSelect={() => handleSelect(key)} className="flex flex-col items-start">
                 <div className="font-medium">
-                  <HighlightText text={t(label)} query={searchQuery} />
+                  <HighlightText text={label} query={searchQuery} />
                 </div>
                 <div className="text-xs text-muted-foreground">
                   <HighlightText text={key} query={searchQuery} />

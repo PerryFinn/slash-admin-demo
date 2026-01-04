@@ -1,5 +1,4 @@
 import { type CSSProperties, useCallback, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import screenfull from "screenfull";
 import { type ThemeColorPresets, ThemeLayout, ThemeMode } from "#/enum";
 import CyanBlur from "@/assets/images/background/cyan-blur.png";
@@ -20,7 +19,6 @@ import { Text } from "@/ui/typography";
 import { cn } from "@/utils";
 
 export default function SettingButton() {
-  const { t } = useTranslation();
   const settings = useSettings();
   const { themeMode, themeColorPresets, themeLayout, themeStretch, breadCrumb, fontSize, fontFamily } = settings;
   const { setSettings } = useSettingActions();
@@ -84,14 +82,14 @@ export default function SettingButton() {
       </SheetTrigger>
       <SheetContent style={sheetContentBgStyle} className="gap-0" onOpenAutoFocus={(e) => e.preventDefault()}>
         <SheetHeader className="flex flex-row items-center justify-between px-6 py-4 shrink-0">
-          <SheetTitle>{t("sys.settings.title")}</SheetTitle>
+          <SheetTitle>设置</SheetTitle>
           <SheetDescription />
         </SheetHeader>
         <ScrollArea>
           <div className="flex flex-col gap-6 px-6 py-2">
             {/* theme mode */}
             <div className="flex flex-col gap-2">
-              <Text variant="subTitle1">{t("sys.settings.mode")}</Text>
+              <Text variant="subTitle1">模式</Text>
               <div className="flex flex-row gap-4">
                 <Card
                   onClick={() => updateSettings({ themeMode: ThemeMode.Light })}
@@ -118,7 +116,7 @@ export default function SettingButton() {
 
             {/* theme layout */}
             <div className="flex flex-col gap-2">
-              <Text variant="subTitle1">{t("sys.settings.layout")}</Text>
+              <Text variant="subTitle1">布局</Text>
 
               <div className="grid grid-cols-3 gap-4">
                 {/* vertical */}
@@ -244,10 +242,10 @@ export default function SettingButton() {
               <div className="flex flex-row items-center justify-between">
                 <Tooltip delayDuration={700} defaultOpen={false} disableHoverableContent>
                   <TooltipTrigger>
-                    <Text variant="subTitle2">{t("sys.settings.stretch")}</Text>
+                    <Text variant="subTitle2">拉伸</Text>
                     <Icon icon="solar:question-circle-linear" className="ml-1" />
                   </TooltipTrigger>
-                  <TooltipContent>{t("sys.settings.stretchTip")}</TooltipContent>
+                  <TooltipContent>仅在屏幕宽度大于 1280px 时可用(xl)</TooltipContent>
                 </Tooltip>
                 <Switch
                   checked={themeStretch}
@@ -258,7 +256,7 @@ export default function SettingButton() {
 
             {/* theme presets */}
             <div className="flex flex-col gap-2">
-              <Text variant="subTitle1">{t("sys.settings.presetThemes")}</Text>
+              <Text variant="subTitle1">预设</Text>
               <div className="flex flex-wrap gap-1">
                 {Object.entries(presetsColors).map(([preset, color]) => (
                   <div
@@ -285,9 +283,9 @@ export default function SettingButton() {
 
             {/* font */}
             <div className="flex flex-col gap-2">
-              <Text variant="subTitle1">{t("sys.settings.font")}</Text>
+              <Text variant="subTitle1">字体</Text>
 
-              <Text variant="subTitle2">{t("sys.settings.family")}</Text>
+              <Text variant="subTitle2">字体系列</Text>
               <div className="flex flex-row gap-3">
                 {Object.entries(FontFamilyPreset).map(([font, family]) => (
                   <Card
@@ -309,7 +307,7 @@ export default function SettingButton() {
                 ))}
               </div>
 
-              <Text variant="subTitle2">{t("sys.settings.size")}</Text>
+              <Text variant="subTitle2">字体大小</Text>
               <Slider
                 min={12}
                 max={20}
@@ -321,20 +319,20 @@ export default function SettingButton() {
 
             {/* Page config */}
             <div className="flex flex-col gap-2">
-              <Text variant="subTitle1">{t("sys.settings.page")}</Text>
+              <Text variant="subTitle1">页面</Text>
               <div className="flex items-center justify-between">
-                <Text variant="subTitle2">{t("sys.settings.breadcrumb")}</Text>
+                <Text variant="subTitle2">面包屑</Text>
                 <Switch checked={breadCrumb} onCheckedChange={(checked) => updateSettings({ breadCrumb: checked })} />
                 {/* <div className="flex items-center justify-between text-sm text-text-disabled">
-									<div>{t("sys.settings.multiTab")}</div>
+									<div>多标签</div>
 									<Switch checked={multiTab} onCheckedChange={(checked) => updateSettings({ multiTab: checked })} />
 								</div> */}
                 {/* <div className="flex items-center justify-between text-sm text-text-disabled">
-									<div>{t("sys.settings.darkSidebar")}</div>
+									<div>暗色侧边栏</div>
 									<Switch checked={darkSidebar} onCheckedChange={(checked) => updateSettings({ darkSidebar: checked })} />
 								</div> */}
                 {/* <div className="flex items-center justify-between text-sm text-text-disabled">
-									<div>{t("sys.settings.accordion")}</div>
+									<div>手风琴菜单</div>
 									<Switch checked={accordion} onCheckedChange={(checked) => updateSettings({ accordion: checked })} />
 								</div> */}
               </div>
@@ -351,12 +349,12 @@ export default function SettingButton() {
               {isFullscreen ? (
                 <>
                   <Icon icon="local:ic-settings-exit-fullscreen" />
-                  <span className="ml-2">{t("sys.settings.exitFullscreen")}</span>
+                  <span className="ml-2">退出全屏</span>
                 </>
               ) : (
                 <>
                   <Icon icon="local:ic-settings-fullscreen" />
-                  <span className="ml-2">{t("sys.settings.fullscreen")}</span>
+                  <span className="ml-2">全屏</span>
                 </>
               )}
             </div>

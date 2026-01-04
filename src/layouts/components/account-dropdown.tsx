@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import { useLoginStateContext } from "@/pages/sys/login/providers/login-provider";
 import { useRouter } from "@/routes/hooks";
@@ -20,7 +19,6 @@ export default function AccountDropdown() {
   const { username, email, avatar } = useUserInfo();
   const { clearUserInfoAndToken } = useUserActions();
   const { backToLogin } = useLoginStateContext();
-  const { t } = useTranslation();
   const logout = () => {
     try {
       clearUserInfoAndToken();
@@ -50,18 +48,18 @@ export default function AccountDropdown() {
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <NavLink to="https://docs-admin.slashspaces.com/" target="_blank">
-            {t("sys.docs")}
+            文档
           </NavLink>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <NavLink to="/management/user/profile">{t("sys.nav.user.profile")}</NavLink>
+          <NavLink to="/management/user/profile">个人资料</NavLink>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <NavLink to="/management/user/account">{t("sys.nav.user.account")}</NavLink>
+          <NavLink to="/management/user/account">账户</NavLink>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="font-bold text-warning" onClick={logout}>
-          {t("sys.login.logout")}
+          退出
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

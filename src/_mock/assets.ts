@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import zhCN from "@/locales/lang/zh_CN";
 import useUserStore from "@/store/userStore";
 import { BasicStatus, PermissionType } from "@/types/enum";
 
@@ -495,6 +496,26 @@ const OTHERS_PERMISSION = [
   },
 ];
 
+const getZh = (key?: string) => {
+  if (!key) return key;
+  const parts = key.split(".");
+  let current: any = zhCN;
+  for (const part of parts) {
+    current = current?.[part];
+  }
+  return typeof current === "string" ? current : key;
+};
+
+const translatePermission = (item: any): any => {
+  const label = item.label ? getZh(item.label) : item.label;
+  const children = item.children?.map(translatePermission);
+  return {
+    ...item,
+    label,
+    ...(children ? { children } : {}),
+  };
+};
+
 export const PERMISSION_LIST = [
   DASHBOARD_PERMISSION,
   MANAGEMENT_PERMISSION,
@@ -503,7 +524,7 @@ export const PERMISSION_LIST = [
   MENU_LEVEL_PERMISSION,
   ERRORS_PERMISSION,
   ...OTHERS_PERMISSION,
-];
+].map(translatePermission);
 
 /**
  * User role mock
