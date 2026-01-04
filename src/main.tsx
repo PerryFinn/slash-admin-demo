@@ -39,7 +39,7 @@ const router = createBrowserRouter(
   },
 );
 
-console.log("router :>> ", router);
+console.log("router :>> ", router, routesSection);
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(<RouterProvider router={router} />);

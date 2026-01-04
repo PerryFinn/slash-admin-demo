@@ -1,5 +1,5 @@
+import { useParams } from "react-router";
 import type { UserInfo } from "#/entity";
-import { useParams } from "@/routes/hooks";
 import { Card, CardContent } from "@/ui/card";
 
 // TODO: fix

@@ -3,12 +3,6 @@ import type { RouteObject } from "react-router";
 import { Outlet } from "react-router";
 
 const LoginPage = lazy(() => import("@/pages/sys/login"));
-const authCustom: RouteObject[] = [
-  {
-    path: "login",
-    element: <LoginPage />,
-  },
-];
 
 export const authRoutes: RouteObject[] = [
   {
@@ -18,6 +12,11 @@ export const authRoutes: RouteObject[] = [
         <Outlet />
       </Suspense>
     ),
-    children: [...authCustom],
+    children: [
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+    ],
   },
 ];
