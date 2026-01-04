@@ -22,10 +22,9 @@ import { cn } from "@/utils";
 const SettingButton = observer(() => {
   const settings = settingStore.snapshot;
   const { themeMode, themeColorPresets, themeLayout, themeStretch, breadCrumb, fontSize, fontFamily } = settings;
-  const { setSettings } = settingStore.actions;
 
   const updateSettings = (partialSettings: Partial<SettingsType>) => {
-    setSettings({
+    settingStore.setSettings({
       ...settings,
       ...partialSettings,
     });

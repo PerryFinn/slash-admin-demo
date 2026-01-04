@@ -576,23 +576,20 @@ export const TEST_USER = {
 };
 export const USER_LIST = [DEFAULT_USER, TEST_USER];
 
-// * Hot update, updating user permissions, only effective in the development environment
+// 热更新，更新用户权限，仅在开发环境中生效
 if (import.meta.hot) {
   import.meta.hot.accept((newModule) => {
     if (!newModule) return;
 
     const { DEFAULT_USER, TEST_USER } = newModule;
 
-    const {
-      userInfo,
-      actions: { setUserInfo },
-    } = userStore;
+    const { userInfo } = userStore;
 
     if (!userInfo?.username) return;
 
     const newUserInfo = userInfo.username === DEFAULT_USER.username ? DEFAULT_USER : TEST_USER;
 
-    setUserInfo(newUserInfo);
+    userStore.setUserInfo(newUserInfo);
 
     console.log("[HMR] User permissions updated:", {
       username: newUserInfo.username,

@@ -19,12 +19,6 @@ class UserStore {
   @observable
   userToken: UserToken = {};
 
-  actions = {
-    setUserInfo: (userInfo: UserInfo) => this.setUserInfo(userInfo),
-    setUserToken: (userToken: UserToken) => this.setUserToken(userToken),
-    clearUserInfoAndToken: () => this.clearUserInfoAndToken(),
-  };
-
   constructor() {
     makeObservable(this);
     this.hydrateFromStorage();
@@ -104,11 +98,8 @@ class UserStore {
 }
 
 export const userStore = new UserStore();
-export const getUserStoreSnapshot = () => userStore.snapshot;
 
 export const useSignIn = () => {
-  const { setUserToken, setUserInfo } = userStore.actions;
-
   const signInMutation = useMutation({
     mutationFn: userService.signin,
   });
@@ -117,8 +108,8 @@ export const useSignIn = () => {
     try {
       const res = await signInMutation.mutateAsync(data);
       const { user, accessToken, refreshToken } = res;
-      setUserToken({ accessToken, refreshToken });
-      setUserInfo(user);
+      userStore.setUserToken({ accessToken, refreshToken });
+      userStore.setUserInfo(user);
     } catch (err) {
       toast.error((err as Error).message, {
         position: "top-center",

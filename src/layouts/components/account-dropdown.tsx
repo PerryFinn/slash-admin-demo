@@ -12,18 +12,15 @@ import {
   DropdownMenuTrigger,
 } from "@/ui/dropdown-menu";
 
-/**
- * Account Dropdown
- */
+/** Account Dropdown */
 const AccountDropdown = observer(() => {
   const { replace } = useRouter();
   const userInfo = userStore.userInfoSnapshot;
-  const { clearUserInfoAndToken } = userStore.actions;
   const { username, email, avatar } = userInfo;
   const { backToLogin } = useLoginStateContext();
   const logout = () => {
     try {
-      clearUserInfoAndToken();
+      userStore.clearUserInfoAndToken();
       backToLogin();
     } catch (error) {
       console.log(error);

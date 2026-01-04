@@ -33,13 +33,7 @@ const createDefaultSettings = (): SettingsType => ({
 });
 
 class SettingStore {
-  @observable
-  settings: SettingsType = createDefaultSettings();
-
-  actions = {
-    setSettings: (settings: SettingsType) => this.setSettings(settings),
-    clearSettings: () => this.clearSettings(),
-  };
+  @observable accessor settings: SettingsType = createDefaultSettings();
 
   constructor() {
     makeObservable(this);

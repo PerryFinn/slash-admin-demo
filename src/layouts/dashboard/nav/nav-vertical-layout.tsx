@@ -18,11 +18,10 @@ type Props = {
 export const NavVerticalLayout = observer(function NavVerticalLayout({ data, className }: Props) {
   const settings = settingStore.snapshot;
   const { themeLayout } = settings;
-  const { setSettings } = settingStore.actions;
 
   const navWidth = themeLayout === ThemeLayout.Vertical ? "var(--layout-nav-width)" : "var(--layout-nav-width-mini)";
   const handleToggle = () => {
-    setSettings({
+    settingStore.setSettings({
       ...settings,
       themeLayout: themeLayout === ThemeLayout.Mini ? ThemeLayout.Vertical : ThemeLayout.Mini,
     });
@@ -39,7 +38,7 @@ export const NavVerticalLayout = observer(function NavVerticalLayout({ data, cla
       }}
     >
       <div
-        className={cn("relative flex items-center py-4 px-2 h-[var(--layout-header-height)] ", {
+        className={cn("relative flex items-center py-4 px-2 h-(--layout-header-height) ", {
           "justify-center": themeLayout === ThemeLayout.Mini,
         })}
       >

@@ -8,7 +8,6 @@ import { typographyTokens } from "../tokens/typography";
 
 export function useTheme() {
   const settings = settingStore.snapshot;
-  const { setSettings } = settingStore.actions;
 
   let colorTokens = settings.themeMode === "light" ? lightColorTokens : darkColorTokens;
 
@@ -23,7 +22,7 @@ export function useTheme() {
   return {
     mode: settings.themeMode,
     setMode: (mode: ThemeMode) => {
-      setSettings({
+      settingStore.setSettings({
         ...settings,
         themeMode: mode,
       });
