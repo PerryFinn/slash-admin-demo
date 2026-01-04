@@ -1,4 +1,4 @@
-import { useUserInfo, useUserToken } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 
 /**
  * permission/role check hook
@@ -19,18 +19,21 @@ import { useUserInfo, useUserToken } from "@/store/userStore";
  * checkAll(['admin', 'editor'])
  */
 export const useAuthCheck = (baseOn: "role" | "permission" = "permission") => {
-  const { accessToken } = useUserToken();
-  const { permissions = [], roles = [] } = useUserInfo();
+  const getResourcePool = () => {
+    const userInfoSnapshot = userStore.userInfoSnapshot;
+    return baseOn === "role" ? (userInfoSnapshot.roles ?? []) : (userInfoSnapshot.permissions ?? []);
+  };
 
-  // depends on baseOn to select resource pool
-  const resourcePool = baseOn === "role" ? roles : permissions;
+  const getAccessToken = () => userStore.userTokenSnapshot.accessToken;
 
   // check if item exists
   const check = (item: string): boolean => {
     // if user is not logged in, return false
+    const accessToken = getAccessToken();
     if (!accessToken) {
       return false;
     }
+    const resourcePool = getResourcePool();
     return resourcePool.some((p) => p.code === item);
   };
 

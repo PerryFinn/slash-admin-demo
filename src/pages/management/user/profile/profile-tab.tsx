@@ -1,15 +1,17 @@
 import { faker } from "@faker-js/faker";
 import { Timeline } from "antd";
+import { observer } from "mobx-react-lite";
 import { Icon } from "@/components/icon";
-import { useUserInfo } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import { themeVars } from "@/theme/theme-vars";
 import { Badge } from "@/ui/badge";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/ui/card";
 import { Text } from "@/ui/typography";
 
-export default function ProfileTab() {
-  const { username } = useUserInfo();
+const ProfileTab = observer(() => {
+  const userInfo = userStore.userInfoSnapshot;
+  const { username } = userInfo;
   const AboutItems = [
     {
       icon: <Icon icon="fa-solid:user" size={18} />,
@@ -278,4 +280,6 @@ export default function ProfileTab() {
       </div>
     </div>
   );
-}
+});
+
+export default ProfileTab;

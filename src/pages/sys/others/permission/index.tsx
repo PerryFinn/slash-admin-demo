@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
+import { observer } from "mobx-react-lite";
 import { Link } from "react-router";
 import { DB_USER } from "@/_mock/assets_backup";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuthCheck } from "@/components/auth/use-auth";
-import { useSignIn, useUserInfo } from "@/store/userStore";
+import { useSignIn, userStore } from "@/store/userStore";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/ui/tabs";
@@ -103,8 +104,11 @@ function SnippetBlock({ title, description, code, children }: SnippetBlockProps)
   );
 }
 
-export default function PermissionPage() {
-  const { permissions, roles, username } = useUserInfo();
+const PermissionPage = observer(() => {
+  const userInfo = userStore.userInfoSnapshot;
+  const permissions = userStore.userInfoSnapshot.permissions ?? [];
+  const roles = userStore.userInfoSnapshot.roles ?? [];
+  const { username } = userInfo;
   const signIn = useSignIn();
   const { check, checkAny, checkAll } = useAuthCheck();
 
@@ -133,16 +137,16 @@ export default function PermissionPage() {
         <CardContent>
           <div className="flex items-center gap-2">
             <Text variant="body1">当前用户角色：</Text>
-            {permissions && permissions.length > 0 ? (
-              <Text variant="body1">[{roles?.map((role) => role.name).join(", ")}]</Text>
+            {permissions.length > 0 ? (
+              <Text variant="body1">[{roles.map((role) => role.name).join(", ")}]</Text>
             ) : (
               <Text variant="body1">[]</Text>
             )}
           </div>
           <div className="flex items-center gap-2">
             <Text variant="body1">当前用户权限：</Text>
-            {permissions && permissions.length > 0 ? (
-              <Text variant="body1">[{permissions?.map((permission) => permission.code).join(", ")}]</Text>
+            {permissions.length > 0 ? (
+              <Text variant="body1">[{permissions.map((permission) => permission.code).join(", ")}]</Text>
             ) : (
               <Text variant="body1">[]</Text>
             )}
@@ -277,4 +281,6 @@ export default function PermissionPage() {
       </Card>
     </div>
   );
-}
+});
+
+export default PermissionPage;

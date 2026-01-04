@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
 import { action, autorun, makeObservable, observable, toJS } from "mobx";
-import { useObserver } from "mobx-react-lite";
 import { toast } from "sonner";
 import type { UserInfo, UserToken } from "#/entity";
 import { StorageEnum } from "#/enum";
@@ -104,18 +103,11 @@ class UserStore {
   }
 }
 
-const userStore = new UserStore();
-
-export const useUserInfo = () => useObserver(() => userStore.userInfoSnapshot);
-export const useUserToken = () => useObserver(() => userStore.userTokenSnapshot);
-export const useUserPermissions = () => useObserver(() => userStore.userInfoSnapshot.permissions || []);
-export const useUserRoles = () => useObserver(() => userStore.userInfoSnapshot.roles || []);
-export const useUserActions = () => userStore.actions;
+export const userStore = new UserStore();
 export const getUserStoreSnapshot = () => userStore.snapshot;
-export const userStoreInstance = userStore;
 
 export const useSignIn = () => {
-  const { setUserToken, setUserInfo } = useUserActions();
+  const { setUserToken, setUserInfo } = userStore.actions;
 
   const signInMutation = useMutation({
     mutationFn: userService.signin,
@@ -137,6 +129,3 @@ export const useSignIn = () => {
 
   return signIn;
 };
-
-export { userStore };
-export default userStore;

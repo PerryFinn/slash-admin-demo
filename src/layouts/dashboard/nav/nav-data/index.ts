@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import type { NavItemDataProps } from "@/components/nav/types";
 import { GLOBAL_CONFIG } from "@/global-config";
-import { useUserPermissions } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import { checkAny } from "@/utils";
 import { backendNavData } from "./nav-data-backend";
 import { frontendNavData } from "./nav-data-frontend";
@@ -65,8 +65,7 @@ const filterNavData = (permissions: string[]) => {
  * @returns 过滤后的导航数据
  */
 export const useFilteredNavData = () => {
-  const permissions = useUserPermissions();
+  const permissions = userStore.userInfoSnapshot.permissions ?? [];
   const permissionCodes = useMemo(() => permissions.map((p) => p.code), [permissions]);
-  const filteredNavData = useMemo(() => filterNavData(permissionCodes), [permissionCodes]);
-  return filteredNavData;
+  return useMemo(() => filterNavData(permissionCodes), [permissionCodes]);
 };

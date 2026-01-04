@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
+import { observer } from "mobx-react-lite";
 import bannerImage from "@/assets/images/background/banner-1.png";
 import { Icon } from "@/components/icon";
-import { useUserInfo } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import { themeVars } from "@/theme/theme-vars";
 import { Avatar, AvatarImage } from "@/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
@@ -11,8 +12,9 @@ import ProfileTab from "./profile-tab";
 import ProjectsTab from "./projects-tab";
 import TeamsTab from "./teams-tab";
 
-function UserProfile() {
-  const { avatar, username } = useUserInfo();
+const UserProfile = observer(() => {
+  const userInfo = userStore.userInfoSnapshot;
+  const { avatar, username } = userInfo;
 
   const bgStyle: CSSProperties = {
     position: "absolute",
@@ -81,6 +83,6 @@ function UserProfile() {
       ))}
     </Tabs>
   );
-}
+});
 
 export default UserProfile;

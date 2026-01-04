@@ -1,13 +1,14 @@
 import { useCallback, useEffect } from "react";
-import { useUserToken } from "@/store/userStore";
+import { observer } from "mobx-react-lite";
+import { userStore } from "@/store/userStore";
 import { useRouter } from "../hooks";
 
 type Props = {
   children: React.ReactNode;
 };
-export default function LoginAuthGuard({ children }: Props) {
+const LoginAuthGuard = observer(({ children }: Props) => {
   const router = useRouter();
-  const { accessToken } = useUserToken();
+  const { accessToken } = userStore.userTokenSnapshot;
 
   const check = useCallback(() => {
     if (!accessToken) {
@@ -20,4 +21,6 @@ export default function LoginAuthGuard({ children }: Props) {
   }, [check]);
 
   return <>{children}</>;
-}
+});
+
+export default LoginAuthGuard;

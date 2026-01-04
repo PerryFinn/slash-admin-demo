@@ -1,8 +1,9 @@
 import { faker } from "@faker-js/faker";
+import { observer } from "mobx-react-lite";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { UploadAvatar } from "@/components/upload";
-import { useUserInfo } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardFooter } from "@/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/ui/form";
@@ -21,8 +22,9 @@ type FieldType = {
   about: string;
 };
 
-export default function GeneralTab() {
-  const { avatar, username, email } = useUserInfo();
+const GeneralTab = observer(() => {
+  const userInfo = userStore.userInfoSnapshot;
+  const { avatar, username, email } = userInfo;
   const form = useForm<FieldType>({
     defaultValues: {
       name: username,
@@ -156,4 +158,6 @@ export default function GeneralTab() {
       </div>
     </div>
   );
-}
+});
+
+export default GeneralTab;

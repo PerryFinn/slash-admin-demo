@@ -1,10 +1,11 @@
 import { Navigate } from "react-router";
+import { observer } from "mobx-react-lite";
 import PlaceholderImg from "@/assets/images/background/placeholder.svg";
 import LocalePicker from "@/components/locale-picker";
 import Logo from "@/components/logo";
 import { GLOBAL_CONFIG } from "@/global-config";
 import SettingButton from "@/layouts/components/setting-button";
-import { useUserToken } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import LoginForm from "./login-form";
 import MobileForm from "./mobile-form";
 import { LoginProvider } from "./providers/login-provider";
@@ -12,8 +13,8 @@ import QrCodeFrom from "./qrcode-form";
 import RegisterForm from "./register-form";
 import ResetForm from "./reset-form";
 
-function LoginPage() {
-  const token = useUserToken();
+const LoginPage = observer(() => {
+  const token = userStore.userTokenSnapshot;
 
   if (token.accessToken) {
     return <Navigate to={GLOBAL_CONFIG.defaultRoute} replace />;
@@ -55,5 +56,5 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+});
 export default LoginPage;

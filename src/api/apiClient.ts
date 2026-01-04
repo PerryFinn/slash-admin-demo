@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import type { Result } from "#/api";
 import { ResultStatus } from "#/enum";
 import { GLOBAL_CONFIG } from "@/global-config";
-import userStore from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 
 const axiosInstance = axios.create({
   baseURL: GLOBAL_CONFIG.apiBaseUrl,

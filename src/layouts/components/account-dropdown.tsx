@@ -1,7 +1,8 @@
+import { observer } from "mobx-react-lite";
 import { NavLink } from "react-router";
 import { useLoginStateContext } from "@/pages/sys/login/providers/login-provider";
 import { useRouter } from "@/routes/hooks";
-import { useUserActions, useUserInfo } from "@/store/userStore";
+import { userStore } from "@/store/userStore";
 import { Button } from "@/ui/button";
 import {
   DropdownMenu,
@@ -14,10 +15,11 @@ import {
 /**
  * Account Dropdown
  */
-export default function AccountDropdown() {
+const AccountDropdown = observer(() => {
   const { replace } = useRouter();
-  const { username, email, avatar } = useUserInfo();
-  const { clearUserInfoAndToken } = useUserActions();
+  const userInfo = userStore.userInfoSnapshot;
+  const { clearUserInfoAndToken } = userStore.actions;
+  const { username, email, avatar } = userInfo;
   const { backToLogin } = useLoginStateContext();
   const logout = () => {
     try {
@@ -64,4 +66,6 @@ export default function AccountDropdown() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+});
+
+export default AccountDropdown;
