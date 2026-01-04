@@ -5,10 +5,9 @@
 import { action, makeObservable, observable } from "mobx";
 
 export class DemoStore {
-  @observable
-  name: string = "";
-  @observable
-  age: number = 0;
+  @observable accessor name: string = "";
+
+  @observable accessor age: number = 0;
 
   constructor() {
     makeObservable(this);

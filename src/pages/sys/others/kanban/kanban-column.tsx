@@ -1,9 +1,9 @@
 import { SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { faker } from "@faker-js/faker";
+import { observer } from "mobx-react-lite";
 import { type CSSProperties, useRef, useState } from "react";
 import { useEvent } from "react-use";
-import { observer } from "mobx-react-lite";
 import { ThemeMode } from "#/enum";
 import { Icon } from "@/components/icon";
 import { settingStore } from "@/store/settingStore";

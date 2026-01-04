@@ -1,6 +1,6 @@
-import { observer } from "mobx-react-lite";
 import type { ThemeConfig } from "antd";
 import { App, ConfigProvider, theme } from "antd";
+import { observer } from "mobx-react-lite";
 import { ThemeMode } from "#/enum";
 import useLocale from "@/locales/use-locale";
 import { settingStore } from "@/store/settingStore";
@@ -8,7 +8,7 @@ import { removePx } from "@/utils/theme";
 import { baseThemeTokens } from "../tokens/base";
 import { darkColorTokens, lightColorTokens, presetsColors } from "../tokens/color";
 import type { UILibraryAdapter } from "../type";
-import styles from "./antd.adapter.module.css";
+import styles from "./antd.adapter.module.less";
 
 export const AntdAdapter: UILibraryAdapter = observer(({ mode, children }) => {
   const { language } = useLocale();

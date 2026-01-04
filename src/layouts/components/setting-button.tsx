@@ -1,5 +1,5 @@
-import { type CSSProperties, useCallback, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
+import { type CSSProperties, useCallback, useEffect, useState } from "react";
 import screenfull from "screenfull";
 import { type ThemeColorPresets, ThemeLayout, ThemeMode } from "#/enum";
 import CyanBlur from "@/assets/images/background/cyan-blur.png";

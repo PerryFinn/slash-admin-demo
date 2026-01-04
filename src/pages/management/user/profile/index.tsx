@@ -1,5 +1,5 @@
-import type { CSSProperties } from "react";
 import { observer } from "mobx-react-lite";
+import type { CSSProperties } from "react";
 import bannerImage from "@/assets/images/background/banner-1.png";
 import { Icon } from "@/components/icon";
 import { userStore } from "@/store/userStore";

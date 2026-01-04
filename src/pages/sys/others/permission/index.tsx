@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
 import { observer } from "mobx-react-lite";
+import type { ReactNode } from "react";
 import { Link } from "react-router";
 import { DB_USER } from "@/_mock/assets_backup";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuthCheck } from "@/components/auth/use-auth";
-import { useSignIn, userStore } from "@/store/userStore";
+import { userStore, useSignIn } from "@/store/userStore";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/ui/tabs";

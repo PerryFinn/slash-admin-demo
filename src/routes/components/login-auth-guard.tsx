@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useCallback, useEffect } from "react";
 import { userStore } from "@/store/userStore";
 import { useRouter } from "../hooks";
 

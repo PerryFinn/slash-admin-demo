@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
 import { observer } from "mobx-react-lite";
+import type { ReactNode } from "react";
 import { Icon } from "@/components/icon";
 import LocalePicker from "@/components/locale-picker";
 import { settingStore } from "@/store/settingStore";

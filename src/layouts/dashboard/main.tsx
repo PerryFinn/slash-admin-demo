@@ -1,7 +1,7 @@
+import { observer } from "mobx-react-lite";
 import { clone, concat } from "ramda";
 import { Suspense } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
-import { observer } from "mobx-react-lite";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { LineLoading } from "@/components/loading";
 import { GLOBAL_CONFIG } from "@/global-config";

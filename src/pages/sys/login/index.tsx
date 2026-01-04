@@ -1,5 +1,5 @@
-import { Navigate } from "react-router";
 import { observer } from "mobx-react-lite";
+import { Navigate } from "react-router";
 import PlaceholderImg from "@/assets/images/background/placeholder.svg";
 import LocalePicker from "@/components/locale-picker";
 import Logo from "@/components/logo";

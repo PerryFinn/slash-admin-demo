@@ -1,5 +1,5 @@
-import { useLayoutEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useLayoutEffect } from "react";
 import { HtmlDataAttribute } from "#/enum";
 import { settingStore } from "@/store/settingStore";
 import { applyThemeCssVars } from "./theme-vars";
