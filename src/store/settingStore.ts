@@ -1,4 +1,4 @@
-import { action, autorun, makeObservable, observable, toJS } from "mobx";
+import { autorun, makeAutoObservable, toJS } from "mobx";
 import { StorageEnum, ThemeColorPresets, ThemeLayout, ThemeMode } from "#/enum";
 import { FontFamilyPreset, typographyTokens } from "@/theme/tokens/typography";
 
@@ -33,10 +33,10 @@ const createDefaultSettings = (): SettingsType => ({
 });
 
 class SettingStore {
-  @observable accessor settings: SettingsType = createDefaultSettings();
+  settings: SettingsType = createDefaultSettings();
 
   constructor() {
-    makeObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
     this.hydrateFromStorage();
     this.setupPersistence();
   }
@@ -45,12 +45,10 @@ class SettingStore {
     return toJS(this.settings);
   }
 
-  @action
   setSettings(settings: SettingsType) {
     this.settings = settings;
   }
 
-  @action
   clearSettings() {
     this.settings = createDefaultSettings();
     this.removePersistedSettings();

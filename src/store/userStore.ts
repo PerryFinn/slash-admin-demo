@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { action, autorun, makeObservable, observable, toJS } from "mobx";
+import { autorun, makeAutoObservable, toJS } from "mobx";
 import { toast } from "sonner";
 import type { UserInfo, UserToken } from "#/entity";
 import { StorageEnum } from "#/enum";
@@ -14,13 +14,11 @@ const USER_STORE_KEY = "userStore";
 const USER_STORE_VERSION = 0;
 
 class UserStore {
-  @observable
   userInfo: Partial<UserInfo> = {};
-  @observable
   userToken: UserToken = {};
 
   constructor() {
-    makeObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
     this.hydrateFromStorage();
     this.setupPersistence();
   }
@@ -40,17 +38,14 @@ class UserStore {
     return toJS(this.userToken);
   }
 
-  @action
   setUserInfo(userInfo: UserInfo) {
     this.userInfo = userInfo;
   }
 
-  @action
   setUserToken(userToken: UserToken) {
     this.userToken = userToken;
   }
 
-  @action
   clearUserInfoAndToken() {
     this.userInfo = {};
     this.userToken = {};

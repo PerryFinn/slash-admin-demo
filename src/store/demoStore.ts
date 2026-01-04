@@ -2,23 +2,28 @@
  * 此文件为示例文件，用于演示 MobX 的使用方式，不作为业务代码使用
  */
 
-import { action, makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 export class DemoStore {
-  @observable accessor name: string = "";
+  name: string = "";
 
-  @observable accessor age: number = 0;
+  age: number = 0;
 
   constructor() {
-    makeObservable(this);
+    makeAutoObservable(
+      this,
+      {
+        name: false, // 对于 name 字段不让 MobX 处理
+        setName: false,
+      },
+      { autoBind: true },
+    );
   }
 
-  @action
   setName(value: string) {
     this.name = value;
   }
 
-  @action
   setAge(value: number) {
     this.age = value;
   }
