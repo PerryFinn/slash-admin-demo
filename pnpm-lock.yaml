@@ -48,7 +48,7 @@ importers:
         specifier: ^5.22.1
         version: 5.29.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       axios:
-        specifier: ^1.7.7
+        specifier: ^1.13.2
         version: 1.13.2
       class-variance-authority:
         specifier: ^0.7.1
@@ -111,7 +111,7 @@ importers:
         specifier: ^13.5.0
         version: 13.5.0(i18next@23.16.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-router:
-        specifier: ^7.0.2
+        specifier: ^7.11.0
         version: 7.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-use:
         specifier: ^17.5.1
