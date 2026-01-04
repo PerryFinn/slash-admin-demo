@@ -1,5 +1,4 @@
 import "./global.css";
-import "./locales/i18n";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import { worker } from "./_mock";

@@ -61,8 +61,8 @@ const filterNavData = (permissions: string[]) => {
 };
 
 /**
- * Hook to get filtered navigation data based on user permissions
- * @returns Filtered navigation data
+ * 根据用户权限获取过滤后的导航数据
+ * @returns 过滤后的导航数据
  */
 export const useFilteredNavData = () => {
   const permissions = useUserPermissions();

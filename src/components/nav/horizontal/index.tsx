@@ -5,10 +5,7 @@ import { NavGroup } from "./nav-group";
 export function NavHorizontal({ data, className, ...props }: NavProps) {
   return (
     <nav
-      className={cn(
-        "flex items-center gap-1 min-h-[var(--layout-nav-height-horizontal)] border-b border-dashed",
-        className,
-      )}
+      className={cn("flex items-center gap-1 min-h-(--layout-nav-height-horizontal) border-b border-dashed", className)}
       {...props}
     >
       {data.map((group, index) => (

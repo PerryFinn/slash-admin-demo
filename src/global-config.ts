@@ -1,29 +1,29 @@
 import { version as pkgVersion } from "../package.json";
 
 /**
- * Global application configuration type definition
+ * 全局应用配置类型定义
  */
 export type GlobalConfig = {
-  /** Application name */
+  /** 应用名称 */
   appName: string;
-  /** Application version number */
+  /** 应用版本号 */
   appVersion: string;
-  /** Default route path for the application */
+  /** 应用程序默认路由路径 */
   defaultRoute: string;
-  /** Public path for static assets */
+  /** 公共静态资源路径 */
   publicPath: string;
-  /** Base URL for API endpoints */
+  /** API 端点的基础 URL */
   apiBaseUrl: string;
-  /** Routing mode: frontend routing or backend routing */
+  /** 路由模式：前端路由或后端路由 */
   routerMode: "frontend" | "backend";
 };
 
 /**
- * Global configuration constants
- * Reads configuration from environment variables and package.json
+ * 全局配置常量
+ * 从环境变量和 `package.json` 中读取配置
  *
  * @warning
- * Please don't use the import.meta.env to get the configuration, use the GLOBAL_CONFIG instead
+ * 请不要使用 `import.meta.env` 来获取配置，使用 `GLOBAL_CONFIG` 代替
  */
 export const GLOBAL_CONFIG: GlobalConfig = {
   appName: "Slash Admin",

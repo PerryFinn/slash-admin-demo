@@ -3,7 +3,6 @@ import { toast } from "sonner";
 import type { Result } from "#/api";
 import { ResultStatus } from "#/enum";
 import { GLOBAL_CONFIG } from "@/global-config";
-import { t } from "@/locales/i18n";
 import userStore from "@/store/userStore";
 
 const axiosInstance = axios.create({
@@ -22,16 +21,16 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (res: AxiosResponse<Result<any>>) => {
-    if (!res.data) throw new Error(t("sys.api.apiRequestFailed"));
+    if (!res.data) throw new Error("请求出错，请稍候重试");
     const { status, data, message } = res.data;
     if (status === ResultStatus.SUCCESS) {
       return data;
     }
-    throw new Error(message || t("sys.api.apiRequestFailed"));
+    throw new Error(message || "请求出错，请稍候重试");
   },
   (error: AxiosError<Result>) => {
     const { response, message } = error || {};
-    const errMsg = response?.data?.message || message || t("sys.api.errorMessage");
+    const errMsg = response?.data?.message || message || "操作失败,系统异常!";
     toast.error(errMsg, { position: "top-center" });
     if (response?.status === 401) {
       userStore.getState().actions.clearUserInfoAndToken();
