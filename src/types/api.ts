@@ -1,7 +1,5 @@
-import type { StatusCode } from "./enum";
-
 export interface ReqResult<T = unknown> {
-  statusCode: StatusCode;
+  statusCode: number;
   message: string;
   data: T;
   success: boolean;

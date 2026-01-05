@@ -1,16 +1,11 @@
-import type { ReqResult } from "@/types/api";
+import type { ReqResult } from "#/api";
 import { apiClient } from "../apiClient";
 import type { IRuntimeConfig } from "../interfaces/runtime";
 
 export class RuntimeModel {
-  /**
-   * 查询运行时配置
-   */
+  /** 查询运行时配置 */
   public async queryRuntimeConfig() {
-    return apiClient.request<ReqResult<IRuntimeConfig>>({
-      url: "/cisp/runtime/config",
-      method: "GET",
-    });
+    return apiClient.get<ReqResult<IRuntimeConfig>>("/cisp/runtime/config");
   }
 }
 

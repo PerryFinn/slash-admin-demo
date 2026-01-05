@@ -1,9 +1,10 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { MotionLazy } from "./components/animate/motion-lazy";
 import { RouteLoadingProgress } from "./components/loading";
 import Toast from "./components/toast";
 import { AntdAdapter } from "./theme/adapter/antd.adapter";
 import { ThemeProvider } from "./theme/theme-provider";
+import { queryClient } from "./utils/react-query";
 
 if (import.meta.env.DEV) {
   import("react-scan").then(({ scan }) => {
@@ -18,7 +19,7 @@ if (import.meta.env.DEV) {
 
 function App({ children }: { children: React.ReactNode }) {
   return (
-    <QueryClientProvider client={new QueryClient()}>
+    <QueryClientProvider client={queryClient}>
       <ThemeProvider adapters={[AntdAdapter]}>
         <Toast />
         <RouteLoadingProgress />
