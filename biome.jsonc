@@ -25,7 +25,8 @@
       },
       "a11y": {
         "useKeyWithClickEvents": "off",
-        "noStaticElementInteractions": "off"
+        "noStaticElementInteractions": "off",
+        "useValidAnchor": "off"
       }
     }
   },

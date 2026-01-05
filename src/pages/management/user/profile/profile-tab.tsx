@@ -147,7 +147,7 @@ const ProfileTab = observer(() => {
               items={[
                 {
                   color: themeVars.colors.palette.error.default,
-                  children: (
+                  content: (
                     <div className="flex flex-col">
                       <div className="flex items-center justify-between">
                         <Text>8 Invoices have been paid</Text>
@@ -166,7 +166,7 @@ const ProfileTab = observer(() => {
                 },
                 {
                   color: themeVars.colors.palette.primary.default,
-                  children: (
+                  content: (
                     <div className="flex flex-col">
                       <div className="flex items-center justify-between">
                         <Text>Create a new project for client 😎</Text>
@@ -184,7 +184,7 @@ const ProfileTab = observer(() => {
                 },
                 {
                   color: themeVars.colors.palette.info.default,
-                  children: (
+                  content: (
                     <div className="flex flex-col">
                       <div className="flex items-center justify-between">
                         <Text>Order #37745 from September</Text>
@@ -198,7 +198,7 @@ const ProfileTab = observer(() => {
                 },
                 {
                   color: themeVars.colors.palette.warning.default,
-                  children: (
+                  content: (
                     <div className="flex flex-col">
                       <div className="flex items-center justify-between">
                         <Text>Public Meeting</Text>

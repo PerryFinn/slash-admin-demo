@@ -1,6 +1,7 @@
-import { ProLayout } from "@ant-design/pro-components";
+import { PageContainer, ProLayout } from "@ant-design/pro-components";
 import { useCallback, useMemo } from "react";
 import { Link } from "react-router";
+import { GLOBAL_CONFIG } from "@/global-config";
 import { usePathname } from "@/routes/hooks";
 import { getFrontendRoutes } from "@/routes/sections/main/frontend";
 import Main from "./main";
@@ -18,13 +19,16 @@ export default function BasicLayout() {
   return (
     <div className="w-full min-h-screen bg-background">
       <ProLayout
+        title={GLOBAL_CONFIG.appName}
         location={{ pathname }}
         route={{
           routes: menuRoutes,
         }}
         menuItemRender={renderMenuItem}
       >
-        <Main />
+        <PageContainer fixedHeader header={{ title: null, breadcrumbRender: void 0 }}>
+          <Main />
+        </PageContainer>
       </ProLayout>
     </div>
   );
