@@ -31,7 +31,7 @@ const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
 
   if (!user || user.password !== password) {
     return HttpResponse.json({
-      status: 10001,
+      statusCode: 10001,
       message: "Incorrect username or password.",
     });
   }
@@ -49,7 +49,7 @@ const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
   );
 
   return HttpResponse.json({
-    status: StatusCode.SUCCESS,
+    statusCode: StatusCode.SUCCESS,
     message: "",
     data: {
       user: {

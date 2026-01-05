@@ -1,25 +1,31 @@
-import Header from "./header";
+import { ProLayout } from "@ant-design/pro-components";
+import { useCallback, useMemo } from "react";
+import { Link } from "react-router";
+import { usePathname } from "@/routes/hooks";
+import { getFrontendRoutes } from "@/routes/sections/main/frontend";
 import Main from "./main";
-import { NavVerticalLayout, useFilteredNavData } from "./nav";
+import { routesToMenu } from "./menu";
 
 export default function BasicLayout() {
-  const navData = useFilteredNavData();
+  const pathname = usePathname();
+  const menuRoutes = useMemo(() => routesToMenu(getFrontendRoutes()), []);
 
-  const mainPaddingLeft = "var(--layout-nav-width)";
+  const renderMenuItem = useCallback((item: any, dom: React.ReactNode) => {
+    if (!item.path) return dom;
+    return <Link to={item.path}>{dom}</Link>;
+  }, []);
+
   return (
-    <div data-slot="slash-layout-root" className="w-full min-h-screen bg-background">
-      {/* Fixed Header */}
-      <NavVerticalLayout data={navData} />
-
-      <div
-        className="relative w-full min-h-screen flex flex-col transition-[padding] duration-300 ease-in-out"
-        style={{
-          paddingLeft: mainPaddingLeft,
+    <div className="w-full min-h-screen bg-background">
+      <ProLayout
+        location={{ pathname }}
+        route={{
+          routes: menuRoutes,
         }}
+        menuItemRender={renderMenuItem}
       >
-        <Header />
         <Main />
-      </div>
+      </ProLayout>
     </div>
   );
 }
