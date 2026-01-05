@@ -3,8 +3,7 @@ import { HttpResponse, http } from "msw";
 import { UserApi } from "@/api/services/userService";
 import zhCN from "@/locales/lang/zh_CN";
 import { StatusCode } from "@/types/enum";
-import { convertFlatToTree } from "@/utils/tree";
-import { DB_MENU, DB_PERMISSION, DB_ROLE, DB_ROLE_PERMISSION, DB_USER, DB_USER_ROLE } from "../assets_backup";
+import { DB_PERMISSION, DB_ROLE, DB_ROLE_PERMISSION, DB_USER, DB_USER_ROLE } from "../assets_backup";
 
 const getZh = (key?: string) => {
   if (!key) return key;
@@ -14,16 +13,6 @@ const getZh = (key?: string) => {
     current = current?.[part];
   }
   return typeof current === "string" ? current : key;
-};
-
-const mapMenu = (item: any): any => {
-  const children = item.children?.map(mapMenu);
-  return {
-    ...item,
-    name: getZh(item.name),
-    caption: item.caption ? getZh(item.caption) : item.caption,
-    ...(children ? { children } : {}),
-  };
 };
 
 const mapPermission = (item: any): any => {
@@ -59,8 +48,6 @@ const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
     DB_PERMISSION.find((permission) => permission.id === item.permissionId),
   );
 
-  const menu = convertFlatToTree(DB_MENU).map(mapMenu);
-
   return HttpResponse.json({
     status: StatusCode.SUCCESS,
     message: "",
@@ -69,7 +56,6 @@ const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
         ...userWithoutPassword,
         roles,
         permissions: permissions.map((item) => (item ? mapPermission(item) : item)),
-        menu,
       },
       accessToken: faker.string.uuid(),
       refreshToken: faker.string.uuid(),
