@@ -39,7 +39,7 @@ const Main = observer(() => {
         className={cn(
           "flex-auto w-full flex flex-col",
           "transition-[max-width] duration-300 ease-in-out",
-          "px-4 sm:px-6 py-4 sm:py-6 md:px-8 mx-auto",
+          "px-4 sm:px-6 py-4 sm:py-6 md:px-8 mx-auto border-2 border-red-500",
           {
             "max-w-full": themeStretch,
             "xl:max-w-screen-xl": !themeStretch,

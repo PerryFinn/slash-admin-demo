@@ -1,23 +1,13 @@
-import { observer } from "mobx-react-lite";
 import Header from "./header";
 import Main from "./main";
 import { NavVerticalLayout, useFilteredNavData } from "./nav";
 
-export default function DashboardLayout() {
-  return (
-    <div data-slot="slash-layout-root" className="w-full min-h-screen bg-background">
-      <PcVerticalLayout />
-    </div>
-  );
-}
-
-const PcVerticalLayout = observer(() => {
+export default function BasicLayout() {
   const navData = useFilteredNavData();
 
   const mainPaddingLeft = "var(--layout-nav-width)";
-
   return (
-    <>
+    <div data-slot="slash-layout-root" className="w-full min-h-screen bg-background">
       {/* Fixed Header */}
       <NavVerticalLayout data={navData} />
 
@@ -30,6 +20,6 @@ const PcVerticalLayout = observer(() => {
         <Header />
         <Main />
       </div>
-    </>
+    </div>
   );
-});
+}
