@@ -4,9 +4,9 @@ type Props = {
   children: React.ReactNode;
 };
 /**
- * [Reduce bundle size by lazy-loading a subset of Motion's features](https://www.framer.com/motion/lazy-motion/)
+ * [通过懒加载Motion功能子集来减小包大小](https://www.framer.com/motion/lazy-motion/)
  *
- * With LazyMotion and the m component, we can reduce this to 6kb for the initial render and then sync or async load a subset of features.
+ * 使用LazyMotion和m组件，我们可以将初始渲染减少到6kb，然后同步或异步加载功能子集。
  */
 export function MotionLazy({ children }: Props) {
   return (

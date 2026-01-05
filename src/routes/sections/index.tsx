@@ -1,7 +1,7 @@
 import { Navigate, type RouteObject } from "react-router";
 import { authRoutes } from "./auth";
-import { dashboardRoutes } from "./dashboard";
 import { errorsRoutes } from "./errors";
+import { dashboardRoutes } from "./main";
 
 export const appRoutes: RouteObject[] = [
   // Auth
