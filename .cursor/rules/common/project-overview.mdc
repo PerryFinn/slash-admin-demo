@@ -18,7 +18,6 @@ alwaysApply: true
 
 * **[Tailwind CSS](https://tailwindcss.com)**: A utility-first CSS framework for rapidly building custom user interfaces.
 * **[Framer Motion](https://www.framer.com/motion)**: A powerion library for creating fluid animations in React.
-* **[shadcn/ui](https://ui.shadcn.com)**: Provides a set of reusable components built on top of Radix UI and Tailwind CSS.
 * **[Iconify](https://iconify.design)**: For using various icon sets within the project.
 
 ### State Management
