@@ -10,7 +10,6 @@ import { GLOBAL_CONFIG } from "@/global-config";
 import { Avatar, AvatarImage } from "@/ui/avatar";
 import { Button } from "@/ui/button";
 import { Card, CardContent } from "@/ui/card";
-import { Progress } from "@/ui/progress";
 import { Text, Title } from "@/ui/typography";
 import { rgbAlpha } from "@/utils/theme";
 import BannerCard from "./banner-card";
@@ -50,24 +49,6 @@ const quickStats = [
   },
 ];
 
-const monthlyRevenue = {
-  series: [
-    {
-      name: "Revenue",
-      data: [30, 40, 35, 50, 49, 70, 91, 60, 50, 55, 60, 65],
-    },
-  ],
-  categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  percent: 5.44,
-};
-
-const projectTasks = [
-  { label: "Horizontal Layout", color: "#3b82f6" },
-  { label: "Invoice Generator", color: "#f59e42" },
-  { label: "Package Upgrades", color: "#fbbf24" },
-  { label: "Figma Auto Layout", color: "#10b981" },
-];
-
 const projectUsers = [
   { avatar: avatar1, name: "John" },
   { avatar: avatar2, name: "Wiliam" },
@@ -95,35 +76,6 @@ const totalIncome = {
 
 export default function Workbench() {
   const [activeTab, setActiveTab] = useState("All Transaction");
-  const monthlyRevenueOption = useChart({
-    grid: { left: 0, right: 0, top: 8, bottom: 0, containLabel: false },
-    xAxis: {
-      type: "category",
-      data: monthlyRevenue.categories,
-      boundaryGap: false,
-      axisLine: { show: false },
-      axisTick: { show: false },
-      axisLabel: { show: false },
-      splitLine: { show: false },
-    },
-    yAxis: {
-      type: "value",
-      axisLine: { show: false },
-      axisTick: { show: false },
-      axisLabel: { show: false },
-      splitLine: { show: false },
-    },
-    tooltip: { trigger: "axis" },
-    series: monthlyRevenue.series.map((s) => ({
-      name: s.name,
-      type: "line",
-      smooth: true,
-      showSymbol: false,
-      lineStyle: { width: 2 },
-      areaStyle: { opacity: 0.2 },
-      data: s.data,
-    })),
-  });
 
   const projectOverviewSparklineOption = useChart({
     grid: { left: 0, right: 0, top: 0, bottom: 0 },
@@ -196,45 +148,6 @@ export default function Workbench() {
             </CardContent>
           </Card>
         ))}
-      </div>
-
-      {/* 月度收入+项目进度区块 */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <Card className="lg:col-span-2">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-2">
-              <Text variant="body2" className="font-semibold">
-                Monthly Revenue
-              </Text>
-              <span className="flex items-center gap-1 text-green-500 font-bold text-sm">
-                <Icon icon="mdi:arrow-up" size={16} />
-                {monthlyRevenue.percent}%
-              </span>
-            </div>
-            <Chart option={monthlyRevenueOption} height={220} />
-          </CardContent>
-        </Card>
-        <Card className="flex flex-col gap-4 p-6">
-          <Text variant="body2" className="font-semibold  mb-2">
-            Project - {GLOBAL_CONFIG.appName}
-          </Text>
-          <div className="flex items-center justify-between mb-2">
-            <Text variant="body2">Release v1.2.0</Text>
-            <span className="text-xs font-bold text-blue-500">70%</span>
-          </div>
-          <Progress value={70} />
-          <ul className="flex flex-col gap-2 mt-2 mb-4">
-            {projectTasks.map((task) => (
-              <li key={task.label} className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 rounded-full" style={{ background: task.color }} />
-                <Text variant="body2">{task.label}</Text>
-              </li>
-            ))}
-          </ul>
-          <Button className="w-full mt-auto" size="sm">
-            <Icon icon="mdi:plus" size={18} /> Add task
-          </Button>
-        </Card>
       </div>
 
       {/* 项目概览区块 */}

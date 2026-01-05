@@ -4,7 +4,6 @@ import { useChart } from "@/components/chart/useChart";
 import Icon from "@/components/icon/icon";
 import { Button } from "@/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/ui/card";
-import { Progress } from "@/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/ui/select";
 import { Text, Title } from "@/ui/typography";
 import { cn } from "@/utils";
@@ -242,7 +241,6 @@ export default function Analysis() {
   const topPages = dashboardData.topPages[timeType];
   const sessionDevices = dashboardData.sessionDevices[timeType];
   const topChannels = dashboardData.topChannels[timeType];
-  const trafficData = dashboardData.trafficData[timeType];
 
   const webAnalyticOption = useChart({
     tooltip: { trigger: "axis" },
@@ -557,43 +555,7 @@ export default function Analysis() {
               </Button>
             </CardAction>
           </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr>
-                    <th className="text-left p-2">SOURCE</th>
-                    <th className="text-right p-2">VISITS</th>
-                    <th className="text-right p-2">UNIQUE VISITORS</th>
-                    <th className="text-right p-2">BOUNCE RATE</th>
-                    <th className="text-right p-2">AVG. SESSION DURATION</th>
-                    <th className="text-left p-2">PROGRESS TO GOAL (%)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {trafficData.map((row) => (
-                    <tr key={row.source} className="border-t">
-                      <td className="p-2 font-mono">{row.source}</td>
-                      <td className="p-2 text-right">{row.visits.toLocaleString()}</td>
-                      <td className="p-2 text-right">{row.unique.toLocaleString()}</td>
-                      <td className="p-2 text-right">
-                        <div className="flex items-center gap-2 justify-end">
-                          <Trend value={row.bounce} />
-                        </div>
-                      </td>
-                      <td className="p-2 text-right">{row.duration}</td>
-                      <td className="p-2">
-                        <div className="flex items-center gap-2">
-                          <Progress value={row.progress} />
-                          <span className="text-xs ml-2 align-middle">{row.progress}%</span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
+          <CardContent>123</CardContent>
         </Card>
       </div>
     </div>
