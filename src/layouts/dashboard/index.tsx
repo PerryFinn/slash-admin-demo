@@ -1,30 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { ThemeLayout } from "#/enum";
 import Logo from "@/components/logo";
-import { down, useMediaQuery } from "@/hooks";
 import { settingStore } from "@/store/settingStore";
 import Header from "./header";
 import Main from "./main";
-import { NavHorizontalLayout, NavMobileLayout, NavVerticalLayout, useFilteredNavData } from "./nav";
+import { NavHorizontalLayout, NavVerticalLayout, useFilteredNavData } from "./nav";
 
 export default function DashboardLayout() {
-  const isMobile = useMediaQuery(down("md"));
-
   return (
     <div data-slot="slash-layout-root" className="w-full min-h-screen bg-background">
-      {isMobile ? <MobileLayout /> : <PcLayout />}
+      <PcLayout />
     </div>
-  );
-}
-
-function MobileLayout() {
-  const navData = useFilteredNavData();
-  return (
-    <>
-      {/* Sticky Header */}
-      <Header leftSlot={<NavMobileLayout data={navData} />} />
-      <Main />
-    </>
   );
 }
 
