@@ -2,7 +2,7 @@ import { Navigate, type RouteObject } from "react-router";
 import { GLOBAL_CONFIG } from "@/global-config";
 import DashboardLayout from "@/layouts/dashboard";
 import LoginAuthGuard from "@/routes/components/login-auth-guard";
-import { getFrontendDashboardRoutes } from "./frontend";
+import { getFrontendRoutes } from "./frontend";
 
 export const dashboardRoutes: RouteObject[] = [
   {
@@ -11,9 +11,6 @@ export const dashboardRoutes: RouteObject[] = [
         <DashboardLayout />
       </LoginAuthGuard>
     ),
-    children: [
-      { index: true, element: <Navigate to={GLOBAL_CONFIG.defaultRoute} replace /> },
-      ...getFrontendDashboardRoutes(),
-    ],
+    children: [{ index: true, element: <Navigate to={GLOBAL_CONFIG.defaultRoute} replace /> }, ...getFrontendRoutes()],
   },
 ];

@@ -6,7 +6,7 @@ import App from "./App";
 import { registerLocalIcons } from "./components/icon";
 import { GLOBAL_CONFIG } from "./global-config";
 import ErrorBoundary from "./routes/components/error-boundary";
-import { routesSection } from "./routes/sections";
+import { appRoutes } from "./routes/sections";
 import { initThemeFromStorage } from "./theme/theme-vars";
 import { urlJoin } from "./utils";
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter(
         </App>
       ),
       errorElement: <ErrorBoundary />,
-      children: routesSection,
+      children: appRoutes,
     },
   ],
   {
@@ -35,7 +35,7 @@ const router = createBrowserRouter(
   },
 );
 
-console.log("router :>> ", router, routesSection);
+console.log("router :>> ", router, appRoutes);
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(<RouterProvider router={router} />);

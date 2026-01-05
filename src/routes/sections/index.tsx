@@ -1,15 +1,15 @@
 import { Navigate, type RouteObject } from "react-router";
 import { authRoutes } from "./auth";
 import { dashboardRoutes } from "./dashboard";
-import { mainRoutes } from "./main";
+import { errorsRoutes } from "./errors";
 
-export const routesSection: RouteObject[] = [
+export const appRoutes: RouteObject[] = [
   // Auth
   ...authRoutes,
   // Dashboard
   ...dashboardRoutes,
   // Main
-  ...mainRoutes,
+  ...errorsRoutes,
   // No Match
   { path: "*", element: <Navigate to="/404" replace /> },
 ];
