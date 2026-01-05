@@ -1,4 +1,4 @@
-import { PageContainer, ProLayout } from "@ant-design/pro-components";
+import { ProLayout } from "@ant-design/pro-components";
 import { useCallback, useMemo } from "react";
 import { Link } from "react-router";
 import { GLOBAL_CONFIG } from "@/global-config";
@@ -24,11 +24,16 @@ export default function BasicLayout() {
         route={{
           routes: menuRoutes,
         }}
+        token={{
+          pageContainer: {
+            paddingInlinePageContainerContent: 0,
+            paddingBlockPageContainerContent: 0,
+          },
+        }}
         menuItemRender={renderMenuItem}
+        headerRender={false}
       >
-        <PageContainer fixedHeader header={{ title: null, breadcrumbRender: void 0 }}>
-          <Main />
-        </PageContainer>
+        <Main />
       </ProLayout>
     </div>
   );
