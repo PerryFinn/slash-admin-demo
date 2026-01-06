@@ -29,4 +29,4 @@ ci-verify:
       pnpm config set store-dir .pnpm-store
       pnpm install --frozen-lockfile
   script:
-    - pnpm run ci
+    - biome ci && pnpm run check:types
