@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "preinstall": "lefthook install",
     "lint:fix": "biome check --write . --no-errors-on-unmatched",
-    "check:types": "tsc --noEmit"
+    "check:types": "tsc --noEmit",
+    "ci": "biome ci && pnpm run check:types"
   },
   "dependencies": {
     "@ant-design/pro-components": "3.1.0-0",
@@ -61,7 +62,7 @@
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
     "@cvte/cdn-upload-vite-plugin": "^3.0.0",
-    "@faker-js/faker": "^8.4.1",
+    "@faker-js/faker": "^10.2.0",
     "@types/color": "^3.0.6",
     "@types/node": "^24.10.4",
     "@types/numeral": "^2.0.5",

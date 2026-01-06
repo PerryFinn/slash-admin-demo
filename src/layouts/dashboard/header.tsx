@@ -4,7 +4,6 @@ import { settingStore } from "@/store/settingStore";
 import { cn } from "@/utils";
 import AccountDropdown from "../components/account-dropdown";
 import BreadCrumb from "../components/bread-crumb";
-import SearchBar from "../components/search-bar";
 import SettingButton from "../components/setting-button";
 
 interface HeaderProps {
@@ -29,9 +28,6 @@ const Header = observer(function Header({ leftSlot }: HeaderProps) {
         <div className="hidden md:block ml-4">{breadCrumb && <BreadCrumb />}</div>
       </div>
       <div className="flex items-center gap-1">
-        <SearchBar />
-        {/* <LocalePicker /> */}
-        {/* <NoticeButton /> */}
         <SettingButton />
         <AccountDropdown />
       </div>
